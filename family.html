@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family & Legacy | All of the Humans</title>
+    <style>
+        /* --- FONTS: Editorial Serifs & Clean Sans --- */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&display=swap');
+
+        /* --- RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: #F9F7F1; /* The specific creamy off-white from your reference */
+            color: #1a1a1a;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* --- TYPOGRAPHY UTILITIES --- */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            color: #000;
+            line-height: 0.9;
+        }
+
+        .serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        /* --- VERTICAL LABEL (The "Booking Process" Sidebar) --- */
+        .vertical-label {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-180deg);
+            writing-mode: vertical-rl;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.75rem;
+            z-index: 100;
+            color: #000;
+        }
+
+        /* --- NAV (Minimal Top Left/Right) --- */
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 100;
+        }
+        
+        .nav-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; }
+        .nav-link { text-decoration: none; color: #000; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; }
+
+        /* --- HERO: The "Document It" Layout --- */
+        .editorial-hero {
+            display: grid;
+            grid-template-columns: 45% 55%; /* Asymmetric split */
+            min-height: 100vh;
+            position: relative;
+            padding-top: 120px; /* Space for the big header */
+        }
+
+        /* The Massive Header Spanning the Top */
+        .massive-header {
+            position: absolute;
+            top: 100px;
+            left: 5%;
+            width: 90%;
+            font-size: 11vw; /* Responsive huge size */
+            z-index: 10;
+            pointer-events: none; /* Let clicks pass through */
+            white-space: nowrap;
+            letter-spacing: -0.03em;
+        }
+
+        /* Left Side: Negative Space & Text Blocks */
+        .hero-left {
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Push text to bottom */
+            position: relative;
+        }
+
+        .sub-headline {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 80px; /* Space between subhead and body text */
+            max-width: 80%;
+            line-height: 1.2;
+        }
+
+        .text-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        /* Right Side: The Image (Bleed Edge) */
+        .hero-right {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%; /* Full height of container */
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* --- OVERLAY QUIRKS --- */
+        .floating-caption {
+            position: absolute;
+            top: 20px;
+            right: 20px; /* Just inside the image area */
+            background: transparent;
+            color: #000; /* Dark text on light bg, or adjust if over image */
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* --- SECTION 2: The Steps (Clean & Asymmetric) --- */
+        .steps-section {
+            padding: 100px 60px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .step-card h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .step-card p {
+            font-size: 0.9rem;
+            color: #555;
+            max-width: 250px;
+        }
+        
+        /* Offset the middle card for "quirk" */
+        .step-card:nth-child(2) {
+            margin-top: 80px; 
+        }
+
+        /* --- FOOTER --- */
+        .footer-minimal {
+            padding: 60px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-text {
+            text-decoration: none;
+            color: #000;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+            transition: opacity 0.3s;
+        }
+        .btn-text:hover { opacity: 0.6; }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .editorial-hero { grid-template-columns: 1fr; grid-template-rows: auto 50vh; padding-top: 80px; }
+            .massive-header { font-size: 15vw; top: 80px; left: 20px; }
+            .hero-left { order: 2; padding: 40px 20px; }
+            .hero-right { order: 1; height: 50vh; }
+            .text-columns { grid-template-columns: 1fr; }
+            .vertical-label { display: none; }
+            .steps-grid { grid-template-columns: 1fr; margin-top: 0; }
+            .step-card:nth-child(2) { margin-top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="vertical-label">The Process</div>
+
+    <nav>
+        <div class="nav-logo">all of the humans</div>
+        <a href="index.html" class="nav-link">Back Home</a>
+    </nav>
+
+    <h1 class="massive-header">DOCUMENT IT</h1>
+
+    <section class="editorial-hero">
+        
+        <div class="hero-left">
+            <h2 class="sub-headline">
+                That feeling when time softens, moments linger, and your story comes alive
+            </h2>
+            
+            <div class="text-columns">
+                <p>
+                    I’m finding inspiration in artful, stripped down, raw imagery that has feeling behind it. If I had to choose, I want honest over perfect.
+                </p>
+                <p>
+                    Where I’m able to come alongside your story, collaborate on vision and document what I observe through my own point of view.
+                </p>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <span class="floating-caption" style="z-index: 20;">Booking Process</span>
+            <img src="family.png" class="hero-img" alt="Maternity Documentary Shot">
+        </div>
+
+    </section>
+
+    <section class="steps-section">
+        <span style="font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;">The Experience</span>
+        
+        <div class="steps-grid">
+            <div class="step-card">
+                <h3>01. Connect</h3>
+                <p>We start with a conversation, not a contract. Let's see if our vibes align.</p>
+            </div>
+            
+            <div class="step-card">
+                <h3>02. Create</h3>
+                <p>No stiff posing. Just you, your people, and a space to be yourselves.</p>
+            </div>
+            
+            <div class="step-card">
+                <h3>03. Keep</h3>
+                <p>Heirlooms delivered digitally and in print, ready to outlast us all.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-minimal">
+        <span style="font-family: 'Playfair Display', serif; font-style: italic;">Based in the Quad Cities / Available Worldwide</span>
+        <a href="#" class="btn-text">Start Your Story →</a>
+    </footer>
+
+</body>
+</html>
