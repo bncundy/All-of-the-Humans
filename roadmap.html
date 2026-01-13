@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All of the Humans - 2026 Strategic Roadmap</title>
+    <link rel="stylesheet" href="custom.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #F9F7F1 0%, #F8F5F2 100%);
+            padding: 40px 20px;
+        }
+        
+        .roadmap-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 60px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 2px solid var(--color-black);
+            padding-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .header .tagline {
+            font-size: 1.2rem;
+            color: var(--color-medium-gray);
+            font-style: italic;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .metric-card {
+            background: var(--color-cream);
+            padding: 30px;
+            text-align: center;
+            border-radius: 4px;
+        }
+        
+        .metric-card .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--color-black);
+            margin-bottom: 10px;
+        }
+        
+        .metric-card .label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-medium-gray);
+        }
+        
+        .quarters {
+            margin-bottom: 60px;
+        }
+        
+        .quarter-block {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--color-paper);
+            border-left: 4px solid var(--color-black);
+        }
+        
+        .quarter-block h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .quarter-block .revenue {
+            font-size: 1.5rem;
+            color: var(--color-medium-gray);
+        }
+        
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .focus-item {
+            padding: 15px;
+            background: white;
+            border-radius: 4px;
+        }
+        
+        .focus-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--color-black);
+        }
+        
+        .focus-item ul {
+            list-style: none;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .focus-item ul li:before {
+            content: "✓ ";
+            color: var(--color-black);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .revenue-streams {
+            margin-bottom: 60px;
+        }
+        
+        .stream-bar {
+            display: flex;
+            height: 60px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .stream-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .stream-segment:hover {
+            filter: brightness(1.1);
+        }
+        
+        .weddings { background: #2c3e50; }
+        .family { background: #3498db; }
+        .dfw { background: #e74c3c; }
+        .commercial { background: #27ae60; }
+        .studio { background: #f39c12; }
+        .other { background: #95a5a6; }
+        
+        .stream-legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+        
+        @media print {
+            body { padding: 0; }
+            .roadmap-container { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="roadmap-container">
+        <div class="header">
+            <h1>All of the Humans Photography</h1>
+            <p class="tagline">2026 Strategic Roadmap: Less Volume, More Value</p>
+        </div>
+        
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="number">£102k</div>
+                <div class="label">Revenue Target</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">60</div>
+                <div class="label">Total Clients</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">25hrs</div>
+                <div class="label">Work Week</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">190%</div>
+                <div class="label">Growth Rate</div>
+            </div>
+        </div>
+        
+        <section class="revenue-streams">
+            <h2 style="margin-bottom: 30px; font-size: 2rem;">Revenue Distribution</h2>
+            <div class="stream-bar">
+                <div class="stream-segment weddings" style="width: 47%;">UK Weddings<br>£48k</div>
+                <div class="stream-segment family" style="width: 15%;">UK Family<br>£15.6k</div>
+                <div class="stream-segment dfw" style="width: 12%;">DFW<br>£12.5k</div>
+                <div class="stream-segment commercial" style="width: 13%;">Commercial<br>£13.5k</div>
+                <div class="stream-segment studio" style="width: 9%;">Studio Rental<br>£9.6k</div>
+                <div class="stream-segment other" style="width: 4%;">Other<br>£3.6k</div>
+            </div>
+            <div class="stream-legend">
+                <div class="legend-item">
+                    <div class="legend-color weddings"></div>
+                    <span>UK Weddings (15 @ £3,200 avg)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color family"></div>
+                    <span>UK Family (25 @ £625 avg)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color dfw"></div>
+                    <span>DFW Sessions (14 @ £550 avg)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color commercial"></div>
+                    <span>Commercial (8 projects + retainers)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color studio"></div>
+                    <span>Studio Rentals (96 days @ £100)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color other"></div>
+                    <span>Workshops + Products</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="quarters">
+            <h2 style="margin-bottom: 40px; font-size: 2rem;">Quarterly Milestones</h2>
+            
+            <div class="quarter-block">
+                <h2>
+                    <span>Q1: Foundation</span>
+                    <span class="revenue">£7.2k</span>
+                </h2>
+                <div class="focus-grid">
+                    <div class="focus-item">
+                        <h3>Website & Marketing</h3>
+                        <ul>
+                            <li>Launch new website</li>
+                            <li>UK wedding pricing guide</li>
+                            <li>Join wedding groups</li>
+                            <li>Venue partnerships (3)</li>
+                        </ul>
+                    </div>
+                    <div class="focus-item">
+                        <h3>Client Acquisition</h3>
+                        <ul>
+                            <li>Book 3 UK weddings</li>
+                            <li>DFW April: 8 sessions</li>
+                            <li>2 commercial clients</li>
+                            <li>Wedding fair registration</li>
+                        </ul>
+                    </div>
+                    <div class="focus-item">
+                        <h3>Operations</h3>
+                        <ul>
+                            <li>VCSO workflow setup</li>
+                            <li>AI editing integration</li>
+                            <li>Studio space search</li>
+                            <li>Google Business Profile</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quarter-block">
+                <h2>
+                    <span>Q2: Growth</span>
+                    <span class="revenue">£20.6k</span>
+                </h2>
+                <div class="focus-grid">
+                    <div class="focus-item">
+                        <h3>Studio Launch</h3>
+                        <ul>
+                            <li>Secure studio lease</li>
+                            <li>Fit-out begins</li>
+                            <li>Equipment purchased</li>
+                            <li>Pre-launch marketing</li>
+                        </ul>
+                    </div>
+                    <div class="focus-item">
+                        <h3>Content & SEO</h3>
+                        <ul>
+                            <li>Styled shoots (2)</li>
+                            <li>Blog content series</li>
+                            <li>Venue spotlight posts</li>
+                            <li>Instagram: 1,500 followers</li>
+                        </ul>
+                    </div>
+                    <div class="focus-item">
+                        <h3>Bookings</h3>
+                        <ul>
+                            <li>DFW April trip (8 clients)</li>
+                            <li>Book 5 more UK weddings</li>
+                            <li>First workshop planned</li>
+                            <li>Commercial outreach</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quarter-block">
+                <h2>
+                    <span>Q3: Execution</span>
+                    <span class="revenue">£38k</span>
+                </h2>
+                <div class="focus-grid">
+                    <div class="focus-item">
+                        <h3>Peak Wedding Season</h3>
+                        <ul>
+                            <li>Shoot 6-8 weddings</li>
+                            <li>Streamlined editing</li>
+                            <li>Client testimonials</li>
+                            <li>Book 2027 weddings</li>
+                        </ul>
+                    </div>
+                    <div class="focus-item">
+                        <h3>Studio Operations</h3>
+                        <ul>
+                            <li>Grand opening event</li>
+                            <li>12 rental days/month</li>
+                            <li>First workshop hosted</li>
+                            <li>In-studio sessions</li>
+                        </ul>
+                    </div>
+                    <div class="focus-item">
+                        <h3>Business Growth</h3>
+                        <ul>
+                            <li>4 commercial projects</li>
+                            <li>Referral program launch</li>
+                            <li>Vendor partnerships</li>
+                            <li>PR: local media</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quarter-block">
+                <h2>
+                    <span>Q4: Optimization</span>
+                    <span class="revenue">£37.1k</span>
+                </h2>
+                <div class="focus-grid">
+                    <div class="focus-item">
+                        <h3>Holiday Push</h3>
+                        <ul>
+                            <li>Mini session campaign</li>
+                            <li>DFW October trip (6)</li>
+                            <li>Gift card promotions</li>
+                            <li>2-3 weddings</li>
+                        </ul>
+                    </div>
+                    <div class="focus-item">
+                        <h3>Studio Maturity</h3>
+                        <ul>
+                            <li>Profitable operations</li>
+                            <li>Regular rental clients</li>
+                            <li>Workshop series</li>
+                            <li>Product partnerships</li>
+                        </ul>
+                    </div>
+                    <div class="focus-item">
+                        <h3>2027 Planning</h3>
+                        <ul>
+                            <li>Pricing review</li>
+                            <li>8-10 weddings booked</li>
+                            <li>Strategy refinement</li>
+                            <li>Team hire planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section style="background: var(--color-cream); padding: 40px; border-radius: 4px; margin-bottom: 40px;">
+            <h2 style="margin-bottom: 30px; font-size: 2rem;">Critical Success Factors</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                <div>
+                    <h3 style="margin-bottom: 15px;">Pricing Evolution</h3>
+                    <table style="width: 100%; font-size: 0.9rem;">
+                        <tr style="border-bottom: 1px solid #ccc;">
+                            <th style="text-align: left; padding: 10px 0;">Service</th>
+                            <th style="text-align: right; padding: 10px 0;">Current</th>
+                            <th style="text-align: right; padding: 10px 0;">2026 Target</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 0;">UK Family</td>
+                            <td style="text-align: right;">£300</td>
+                            <td style="text-align: right; font-weight: bold;">£500-£750</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 0;">UK Wedding</td>
+                            <td style="text-align: right;">£1,800</td>
+                            <td style="text-align: right; font-weight: bold;">£2,800-£4,500</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 0;">DFW Session</td>
+                            <td style="text-align: right;">$400</td>
+                            <td style="text-align: right; font-weight: bold;">$650-$900</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 0;">Commercial</td>
+                            <td style="text-align: right;">Ad hoc</td>
+                            <td style="text-align: right; font-weight: bold;">£400-£1,500</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 15px;">Work-Life Balance</h3>
+                    <ul style="list-style: none; line-height: 2;">
+                        <li><strong>25 hours/week max</strong> (down from 40+)</li>
+                        <li><strong>8-12 Saturdays/year</strong> for weddings</li>
+                        <li><strong>School holidays protected</strong></li>
+                        <li><strong>No evening sessions</strong></li>
+                        <li><strong>2-week gallery turnaround</strong> (with AI)</li>
+                        <li><strong>2 DFW trips only</strong> (manageable volume)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section style="text-align: center; padding: 40px; background: var(--color-black); color: white; border-radius: 4px;">
+            <h2 style="color: white; margin-bottom: 20px; font-size: 2.5rem;">The Bottom Line</h2>
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                From <strong>100+ clients at £350 average (£35k revenue)</strong><br>
+                To <strong>60 premium clients at £1,700 average (£102k revenue)</strong>
+            </p>
+            <p style="margin-top: 30px; font-size: 1.1rem; opacity: 0.9; font-style: italic;">
+                190% revenue growth • 40% fewer clients • Sustainable work-life balance
+            </p>
+        </section>
+    </div>
+</body>
+</html>

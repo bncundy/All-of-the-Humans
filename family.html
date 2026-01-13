@@ -3,210 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Documentary family photography capturing authentic moments, maternity milestones, and newborn stories.">
     <title>Family & Legacy | All of the Humans</title>
+    <link rel="stylesheet" href="custom.css">
     <style>
-        /* --- FONTS: Editorial Serifs & Clean Sans --- */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&display=swap');
-
-        /* --- RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        /* Page-specific styles */
         body {
-            background-color: #F9F7F1; /* The specific creamy off-white from your reference */
-            color: #1a1a1a;
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            overflow-x: hidden;
-            line-height: 1.5;
-        }
-
-        /* --- TYPOGRAPHY UTILITIES --- */
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-            color: #000;
-            line-height: 0.9;
-        }
-
-        .serif-italic {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-        }
-
-        /* --- VERTICAL LABEL (The "Booking Process" Sidebar) --- */
-        .vertical-label {
-            position: fixed;
-            left: 30px;
-            top: 50%;
-            transform: translateY(-50%) rotate(-180deg);
-            writing-mode: vertical-rl;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-size: 0.75rem;
-            z-index: 100;
-            color: #000;
-        }
-
-        /* --- NAV (Minimal Top Left/Right) --- */
-        nav {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            padding: 40px 60px;
-            display: flex;
-            justify-content: space-between;
-            z-index: 100;
+            background-color: var(--color-cream);
         }
         
-        .nav-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; }
-        .nav-link { text-decoration: none; color: #000; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; }
-
-        /* --- HERO: The "Document It" Layout --- */
+        /* Editorial hero layout */
         .editorial-hero {
             display: grid;
-            grid-template-columns: 45% 55%; /* Asymmetric split */
+            grid-template-columns: 45% 55%;
             min-height: 100vh;
             position: relative;
-            padding-top: 120px; /* Space for the big header */
+            padding-top: var(--space-3xl);
         }
-
-        /* The Massive Header Spanning the Top */
+        
+        /* Massive header */
         .massive-header {
             position: absolute;
             top: 100px;
             left: 5%;
             width: 90%;
-            font-size: 11vw; /* Responsive huge size */
+            font-size: var(--text-hero);
             z-index: 10;
-            pointer-events: none; /* Let clicks pass through */
+            pointer-events: none;
             white-space: nowrap;
             letter-spacing: -0.03em;
+            font-family: var(--font-serif-alt);
+            font-weight: 400;
         }
-
-        /* Left Side: Negative Space & Text Blocks */
+        
+        /* Left content area */
         .hero-left {
-            padding: 40px 60px;
+            padding: var(--space-md) var(--space-lg);
             display: flex;
             flex-direction: column;
-            justify-content: flex-end; /* Push text to bottom */
+            justify-content: flex-end;
             position: relative;
         }
-
+        
         .sub-headline {
-            font-size: 1.5rem;
+            font-size: var(--text-xl);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 80px; /* Space between subhead and body text */
+            margin-bottom: var(--space-xl);
             max-width: 80%;
             line-height: 1.2;
+            font-family: var(--font-sans);
         }
-
+        
         .text-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            font-size: 0.9rem;
-            color: #333;
+            gap: var(--space-md);
+            font-size: var(--text-base);
+            color: var(--color-dark-gray);
         }
-
-        /* Right Side: The Image (Bleed Edge) */
+        
+        /* Right image area */
         .hero-right {
             position: relative;
             height: 100%;
             overflow: hidden;
         }
-
+        
         .hero-img {
             width: 100%;
-            height: 100%; /* Full height of container */
+            height: 100%;
             object-fit: cover;
             object-position: center;
         }
-
-        /* --- OVERLAY QUIRKS --- */
+        
         .floating-caption {
             position: absolute;
             top: 20px;
-            right: 20px; /* Just inside the image area */
+            right: 20px;
             background: transparent;
-            color: #000; /* Dark text on light bg, or adjust if over image */
-            font-size: 0.75rem;
+            color: var(--color-black);
+            font-size: var(--text-sm);
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            z-index: 20;
         }
-
-        /* --- SECTION 2: The Steps (Clean & Asymmetric) --- */
+        
+        /* Steps section */
         .steps-section {
-            padding: 100px 60px;
-            border-top: 1px solid #e0e0e0;
+            padding: var(--space-2xl) var(--space-lg);
+            border-top: var(--border-width) solid var(--color-border-light);
         }
-
+        
         .steps-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 60px;
-            margin-top: 60px;
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
         }
-
+        
         .step-card h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-sm);
             font-style: italic;
         }
-
+        
         .step-card p {
-            font-size: 0.9rem;
-            color: #555;
+            font-size: var(--text-base);
+            color: var(--color-medium-gray);
             max-width: 250px;
         }
         
-        /* Offset the middle card for "quirk" */
+        /* Offset middle card for visual interest */
         .step-card:nth-child(2) {
-            margin-top: 80px; 
+            margin-top: var(--space-xl);
         }
-
-        /* --- FOOTER --- */
+        
+        /* Footer */
         .footer-minimal {
-            padding: 60px;
-            border-top: 1px solid #e0e0e0;
+            padding: var(--space-lg);
+            border-top: var(--border-width) solid var(--color-border-light);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        .btn-text {
-            text-decoration: none;
-            color: #000;
-            font-size: 1.2rem;
-            border-bottom: 1px solid #000;
-            padding-bottom: 5px;
-            transition: opacity 0.3s;
+        
+        .footer-minimal .serif {
+            font-family: var(--font-serif-alt);
+            font-style: italic;
         }
-        .btn-text:hover { opacity: 0.6; }
-
-        /* RESPONSIVE */
+        
+        /* Responsive */
         @media (max-width: 900px) {
-            .editorial-hero { grid-template-columns: 1fr; grid-template-rows: auto 50vh; padding-top: 80px; }
-            .massive-header { font-size: 15vw; top: 80px; left: 20px; }
-            .hero-left { order: 2; padding: 40px 20px; }
-            .hero-right { order: 1; height: 50vh; }
-            .text-columns { grid-template-columns: 1fr; }
-            .vertical-label { display: none; }
-            .steps-grid { grid-template-columns: 1fr; margin-top: 0; }
-            .step-card:nth-child(2) { margin-top: 0; }
+            .editorial-hero {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 50vh;
+                padding-top: var(--space-xl);
+            }
+            
+            .massive-header {
+                font-size: 15vw;
+                top: 80px;
+                left: 20px;
+            }
+            
+            .hero-left {
+                order: 2;
+                padding: var(--space-md) var(--space-sm);
+            }
+            
+            .hero-right {
+                order: 1;
+                height: 50vh;
+            }
+            
+            .text-columns {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps-grid {
+                grid-template-columns: 1fr;
+                margin-top: 0;
+            }
+            
+            .step-card:nth-child(2) {
+                margin-top: 0;
+            }
+            
+            .footer-minimal {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="vertical-label">The Process</div>
+    <div class="vertical-label">The Memories</div>
 
     <nav>
-        <div class="nav-logo">all of the humans</div>
-        <a href="index.html" class="nav-link">Back Home</a>
+        <a href="index.html" class="nav-logo">all of the humans</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+        </div>
     </nav>
 
-    <h1 class="massive-header">DOCUMENT IT</h1>
+    <h1 class="massive-header">FAMILY</h1>
 
     <section class="editorial-hero">
         
@@ -217,23 +200,23 @@
             
             <div class="text-columns">
                 <p>
-                    I’m finding inspiration in artful, stripped down, raw imagery that has feeling behind it. If I had to choose, I want honest over perfect.
+                    I'm finding inspiration in artful, stripped down, raw imagery that has feeling behind it. If I had to choose, I want honest over perfect.
                 </p>
                 <p>
-                    Where I’m able to come alongside your story, collaborate on vision and document what I observe through my own point of view.
+                    Where I'm able to come alongside your story, collaborate on vision and document what I observe through my own point of view.
                 </p>
             </div>
         </div>
 
         <div class="hero-right">
-            <span class="floating-caption" style="z-index: 20;">Booking Process</span>
-            <img src="family.png" class="hero-img" alt="Maternity Documentary Shot">
+            <span class="floating-caption">Booking Process</span>
+            <img src="family.png" class="hero-img" alt="Family documentary photography">
         </div>
 
     </section>
 
     <section class="steps-section">
-        <span style="font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;">The Experience</span>
+        <span class="label-text">The Experience</span>
         
         <div class="steps-grid">
             <div class="step-card">
@@ -254,9 +237,10 @@
     </section>
 
     <footer class="footer-minimal">
-        <span style="font-family: 'Playfair Display', serif; font-style: italic;">Based in the Quad Cities / Available Worldwide</span>
-        <a href="#" class="btn-text">Start Your Story →</a>
+        <span class="serif">Based in the Quad Cities / Available Worldwide</span>
+        <a href="#contact" class="btn-text">Start Your Story →</a>
     </footer>
 
+    <script src="custom.js"></script>
 </body>
 </html>

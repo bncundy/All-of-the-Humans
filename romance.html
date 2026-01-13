@@ -3,96 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoughtfully designed wedding photography experiences capturing your celebration with elegance and authenticity.">
     <title>Weddings & Romance | All of the Humans</title>
+    <link rel="stylesheet" href="custom.css">
     <style>
-        /* --- FONTS: The Luxury Mix --- */
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap');
-
-        /* --- RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        /* Page-specific styles */
         body {
-            background-color: #F8F5F2; /* Luxury "Paper" Tone */
-            color: #2b2b2b; /* Soft Charcoal */
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            line-height: 1.6;
-            overflow-x: hidden;
-            font-size: 16px;
+            background-color: var(--color-paper);
         }
-
-        /* --- TYPOGRAPHY UTILITIES --- */
-        h1, h2, h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300;
-            color: #1a1a1a;
-            line-height: 1.1;
-        }
-
-        .label-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: #666;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .serif-italic {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 1.2rem;
-            color: #4a4a4a;
-        }
-
-        /* --- GRID LINES (The Architectural Look) --- */
-        .grid-line-top { border-top: 1px solid #dcdcdc; }
-        .grid-line-bottom { border-bottom: 1px solid #dcdcdc; }
-        .grid-line-right { border-right: 1px solid #dcdcdc; }
-
-        /* --- NAV (Sticky & Minimal) --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(248, 245, 242, 0.95); /* Matches BG */
-            padding: 25px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #dcdcdc;
-            z-index: 1000;
-        }
-
-        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; letter-spacing: 0.05em; }
-        .nav-links a { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: #000; text-decoration: none; margin-left: 30px; }
-
-        /* --- HERO: Quiet & Spacious --- */
+        
+        /* Hero section */
         .luxury-hero {
-            padding: 180px 40px 100px 40px;
+            padding: 180px var(--container-padding) var(--space-2xl);
             min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-
+        
         .hero-statement h1 {
-            font-size: 4rem; 
+            font-size: var(--text-5xl);
             max-width: 800px;
             margin-bottom: 30px;
         }
-
+        
         .hero-statement p {
             max-width: 500px;
-            font-size: 0.95rem;
-            color: #555;
+            font-size: var(--text-base);
+            color: var(--color-medium-gray);
         }
-
+        
         .hero-img-strip {
             display: flex;
-            gap: 20px;
-            margin-top: 60px;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
             height: 400px;
         }
         
@@ -103,119 +47,185 @@
             filter: grayscale(100%);
             transition: filter 1s ease;
         }
-        .strip-img:hover { filter: grayscale(0%); }
-
-        /* --- SERVICES (The Numbered System) --- */
-        .services-container {
-            border-top: 1px solid #dcdcdc;
+        
+        .strip-img:hover {
+            filter: grayscale(0%);
         }
-
+        
+        /* Philosophy section */
+        .philosophy-section {
+            padding: var(--space-3xl) var(--container-padding);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .philosophy-section h2 {
+            font-size: var(--text-3xl);
+            margin-bottom: 30px;
+        }
+        
+        .philosophy-section .serif {
+            font-size: var(--text-lg);
+            color: var(--color-dark-gray);
+        }
+        
+        /* Services grid */
+        .services-container {
+            border-top: var(--border-width) solid var(--color-border);
+        }
+        
         .service-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: 500px;
-            border-bottom: 1px solid #dcdcdc;
+            border-bottom: var(--border-width) solid var(--color-border);
         }
-
+        
         .service-info {
-            padding: 80px 60px;
+            padding: var(--space-xl) var(--space-lg);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-right: 1px solid #dcdcdc; /* The divider line */
         }
-
+        
+        .service-info.left {
+            border-right: var(--border-width) solid var(--color-border);
+        }
+        
         .service-img-block {
             height: 100%;
             width: 100%;
             overflow: hidden;
         }
-
+        
         .service-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: brightness(0.95);
+            transition: transform var(--transition-slow);
         }
-
+        
+        .service-img:hover {
+            transform: scale(1.02);
+        }
+        
         .service-number {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: var(--font-serif);
             font-style: italic;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-sm);
             display: block;
-            color: #888;
+            color: var(--color-light-gray);
         }
-
-        .btn-link {
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            color: #1a1a1a;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-            display: inline-block;
-            width: fit-content;
-            margin-top: 30px;
-            transition: border-color 0.3s;
+        
+        .service-info h2 {
+            margin-bottom: var(--space-sm);
         }
-        .btn-link:hover { border-color: #000; }
-
-        /* --- "THE APPROACH" (Text Block) --- */
-        .approach-block {
-            padding: 120px 40px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+        
+        .service-info p {
+            margin-top: var(--space-sm);
+            color: var(--color-medium-gray);
+            font-size: var(--text-base);
         }
-
-        /* --- FOOTER (Clean Grid) --- */
-        .grid-footer {
+        
+        .service-features {
+            margin-top: var(--space-sm);
+            list-style: none;
+            font-size: var(--text-base);
+            color: var(--color-medium-gray);
+            line-height: 2;
+        }
+        
+        .service-features li::before {
+            content: "+ ";
+            margin-right: 5px;
+        }
+        
+        /* Footer grid */
+        .contact-footer {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
-            border-top: 1px solid #dcdcdc;
+            border-top: var(--border-width) solid var(--color-border);
         }
         
         .footer-col {
-            padding: 40px;
-            border-right: 1px solid #dcdcdc;
-            height: 250px;
+            padding: var(--space-md);
+            border-right: var(--border-width) solid var(--color-border);
+            min-height: 250px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .footer-col:last-child { border-right: none; }
-
-        .footer-link {
-            display: block;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: #555;
-            font-size: 0.8rem;
+        
+        .footer-col:last-child {
+            border-right: none;
         }
-
+        
+        .footer-col.wide {
+            grid-column: span 2;
+        }
+        
+        .footer-col h2 {
+            font-size: var(--text-2xl);
+            margin-top: var(--space-xs);
+        }
+        
         /* Responsive */
         @media (max-width: 900px) {
-            .hero-statement h1 { font-size: 2.5rem; }
-            .hero-img-strip { flex-direction: column; height: auto; }
-            .strip-img { height: 300px; width: 100%; }
-            .service-row { grid-template-columns: 1fr; }
-            .service-info { border-right: none; padding: 60px 30px; }
-            .service-img-block { height: 300px; }
-            .grid-footer { grid-template-columns: 1fr 1fr; }
-            .footer-col:nth-child(2) { border-right: none; }
+            .hero-statement h1 {
+                font-size: var(--text-3xl);
+            }
+            
+            .hero-img-strip {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .strip-img {
+                height: 300px;
+                width: 100%;
+            }
+            
+            .service-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-info.left {
+                border-right: none;
+            }
+            
+            .service-info {
+                padding: var(--space-lg) 30px;
+            }
+            
+            .service-img-block {
+                height: 300px;
+            }
+            
+            .contact-footer {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-col:nth-child(2) {
+                border-right: none;
+            }
+            
+            .footer-col.wide {
+                grid-column: span 2;
+            }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo">all of the humans</div>
+        <a href="index.html" class="nav-logo">all of the humans</a>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="#portfolio">Journal</a>
-            <a href="#contact">Inquire</a>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#portfolio" class="nav-link">Journal</a>
+            <a href="#contact" class="nav-link">Inquire</a>
         </div>
     </nav>
 
@@ -229,63 +239,64 @@
         </div>
         
         <div class="hero-img-strip">
-            <img src="romance.png" class="strip-img" style="object-position: top;" alt="Wedding Detail 1">
-            <img src="romance.png" class="strip-img" style="object-position: center;" alt="Wedding Detail 2">
+            <img src="romance.png" class="strip-img" style="object-position: top;" alt="Wedding ceremony detail">
+            <img src="romance.png" class="strip-img" style="object-position: center;" alt="Wedding couple portrait">
         </div>
     </header>
 
-    <section class="approach-block">
+    <section class="philosophy-section">
         <span class="label-text">Our Philosophy</span>
-        <h2 style="font-size: 2.5rem; margin-bottom: 30px;">"Unfolding with elegance, restraint, and timeless beauty."</h2>
-        <p class="serif-italic">— The Studio</p>
+        <h2>"Unfolding with elegance, restraint, and timeless beauty."</h2>
+        <p class="serif italic">— The Studio</p>
     </section>
 
     <section class="services-container">
         
         <div class="service-row">
-            <div class="service-info">
+            <div class="service-info left">
                 <div>
                     <span class="service-number">(no. 01)</span>
                     <h2>The Wedding Day</h2>
-                    <p style="margin-top: 20px; color: #555; font-size: 0.9rem;">
+                    <p>
                         Full-day documentation for couples who value presence over performance. We move quietly, capturing the atmosphere, the textures, and the fleeting glances that define the day.
                     </p>
-                    <ul style="margin-top: 20px; list-style: none; font-size: 0.8rem; color: #666; line-height: 2;">
-                        <li>+ 8-10 Hours Coverage</li>
-                        <li>+ Digital & 35mm Film Hybrid</li>
-                        <li>+ Private Online Gallery</li>
+                    <ul class="service-features">
+                        <li>8-10 Hours Coverage</li>
+                        <li>Digital & 35mm Film Hybrid</li>
+                        <li>Private Online Gallery</li>
                     </ul>
                 </div>
-                <a href="#" class="btn-link">View the Collection</a>
+                <a href="#contact" class="btn-text">View the Collection</a>
             </div>
             <div class="service-img-block">
-                <img src="romance.png" class="service-img" alt="Wedding Day">
+                <img src="romance.png" class="service-img" alt="Wedding day photography">
             </div>
         </div>
 
         <div class="service-row">
-            <div class="service-img-block" style="order: 2;"> <img src="romance.png" class="service-img" style="filter: grayscale(100%);" alt="Elopement">
+            <div class="service-img-block">
+                <img src="romance.png" class="service-img" style="filter: grayscale(100%);" alt="Elopement photography">
             </div>
-            <div class="service-info" style="order: 1; border-right: 1px solid #dcdcdc;">
+            <div class="service-info">
                 <div>
                     <span class="service-number">(no. 02)</span>
                     <h2>The Elopement</h2>
-                    <p style="margin-top: 20px; color: #555; font-size: 0.9rem;">
+                    <p>
                         Intimate celebrations for those who seek the profound in the quiet. Whether a city hall ceremony or a destination vow exchange, we curate a bespoke timeline focused on connection.
                     </p>
-                    <ul style="margin-top: 20px; list-style: none; font-size: 0.8rem; color: #666; line-height: 2;">
-                        <li>+ Up to 4 Hours Coverage</li>
-                        <li>+ Location Scouting & Permitting</li>
-                        <li>+ Heirloom Print Box</li>
+                    <ul class="service-features">
+                        <li>Up to 4 Hours Coverage</li>
+                        <li>Location Scouting & Permitting</li>
+                        <li>Heirloom Print Box</li>
                     </ul>
                 </div>
-                <a href="#" class="btn-link">View the Collection</a>
+                <a href="#contact" class="btn-text">View the Collection</a>
             </div>
         </div>
 
     </section>
 
-    <footer class="grid-footer" id="contact">
+    <footer class="contact-footer" id="contact">
         <div class="footer-col">
             <span class="label-text">Explore</span>
             <div>
@@ -301,12 +312,13 @@
                 <a href="#" class="footer-link">Pinterest</a>
             </div>
         </div>
-        <div class="footer-col" style="grid-column: span 2; border-right: none;">
+        <div class="footer-col wide">
             <span class="label-text">Inquire</span>
-            <h2 style="font-size: 2rem; margin-top: 10px;">Have a date in mind?</h2>
-            <a href="#" class="btn-link" style="margin-top: 20px;">Start the Conversation</a>
+            <h2>Have a date in mind?</h2>
+            <a href="#contact" class="btn-text" style="margin-top: var(--space-sm);">Start the Conversation</a>
         </div>
     </footer>
 
+    <script src="custom.js"></script>
 </body>
 </html>

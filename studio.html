@@ -3,68 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Commercial photography and product styling for brands. Elevated visuals designed to convert.">
     <title>The Studio | All of the Humans</title>
+    <link rel="stylesheet" href="custom.css">
     <style>
-        /* --- FONTS: Modern & Structured --- */
-        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;500&family=Roboto:wght@300;400;700&display=swap');
-
-        /* --- RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        /* Page-specific styles */
         body {
-            background-color: #ffffff;
-            color: #111;
-            font-family: 'Roboto', sans-serif;
-            overflow-x: hidden;
+            background-color: var(--color-white);
         }
-
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3 {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            color: #000;
-        }
-
-        /* --- NAV --- */
+        
+        /* Override nav for studio page */
         nav {
-            padding: 30px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee;
+            background: rgba(255, 255, 255, 0.98);
         }
-        .nav-brand { font-family: 'Oswald', sans-serif; font-weight: 500; text-decoration: none; color: black; letter-spacing: 0.1em; }
-        .back-link { font-size: 0.8rem; text-decoration: none; color: #666; text-transform: uppercase; }
-
-        /* --- HERO: Split Structured --- */
+        
+        .nav-brand {
+            font-family: var(--font-sans);
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--color-black);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: var(--text-sm);
+        }
+        
+        /* Hero split layout */
         .studio-hero {
             display: grid;
             grid-template-columns: 40% 60%;
             height: 80vh;
-            border-bottom: 1px solid #eee;
+            border-bottom: var(--border-width) solid var(--color-border-light);
+            margin-top: 70px;
         }
-
+        
         .hero-content {
-            padding: 80px;
+            padding: var(--space-xl);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-right: 1px solid #eee;
+            border-right: var(--border-width) solid var(--color-border-light);
         }
-
+        
         .hero-content h1 {
-            font-size: 4rem;
+            font-family: var(--font-sans);
+            font-size: var(--text-4xl);
             line-height: 0.9;
             margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
-
+        
         .hero-content p {
-            font-size: 1.1rem;
-            color: #555;
+            font-size: var(--text-lg);
+            color: var(--color-medium-gray);
             line-height: 1.6;
-            margin-bottom: 40px;
+            margin-bottom: var(--space-md);
         }
-
+        
+        .hero-content a {
+            color: var(--color-black);
+            font-weight: bold;
+            text-decoration: underline;
+            transition: opacity var(--transition-speed);
+        }
+        
+        .hero-content a:hover {
+            opacity: 0.6;
+        }
+        
         .hero-image-container {
             position: relative;
             background-color: #f9f9f9;
@@ -73,111 +79,190 @@
         .hero-image {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures product shots look good */
+            object-fit: cover;
         }
-
-        /* --- SERVICES GRID (B2B Focus) --- */
+        
+        /* Services section */
         .services-section {
-            padding: 100px 50px;
+            padding: var(--space-2xl) var(--space-lg);
         }
-
+        
+        .services-section h2 {
+            font-family: var(--font-sans);
+            font-size: var(--text-2xl);
+            text-transform: uppercase;
+            margin-bottom: var(--space-lg);
+        }
+        
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 50px;
+            gap: var(--space-md);
         }
-
+        
         .service-card {
-            border-top: 4px solid #000;
-            padding-top: 20px;
+            border-top: 4px solid var(--color-black);
+            padding-top: var(--space-sm);
         }
-
-        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        .service-card p { font-size: 0.95rem; color: #666; line-height: 1.6; }
-
-        /* --- WORK SHOWCASE (Asymmetrical) --- */
+        
+        .service-card h3 {
+            font-family: var(--font-sans);
+            font-size: var(--text-xl);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            font-size: var(--text-base);
+            color: var(--color-medium-gray);
+            line-height: 1.6;
+        }
+        
+        /* Work showcase */
         .work-section {
             background-color: #f4f4f4;
-            padding: 100px 50px;
+            padding: var(--space-2xl) var(--space-lg);
         }
-
+        
+        .work-header {
+            margin-bottom: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+        
+        .work-header h2 {
+            font-family: var(--font-sans);
+            font-size: var(--text-2xl);
+            text-transform: uppercase;
+        }
+        
         .work-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
             grid-auto-rows: 400px;
-            gap: 20px;
+            gap: var(--space-sm);
         }
-
+        
         .work-item {
             position: relative;
             overflow: hidden;
             background: #ddd;
         }
-
+        
         .work-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s;
+            transition: transform var(--transition-speed);
         }
-
-        .work-item:hover img { transform: scale(1.02); }
-
-        /* Make the grid interesting */
-        .work-item:nth-child(2) { grid-row: span 2; height: 820px; }
-
-        /* --- CONTACT STRIP --- */
+        
+        .work-item:hover img {
+            transform: scale(1.02);
+        }
+        
+        .work-item:nth-child(2) {
+            grid-row: span 2;
+            height: 820px;
+        }
+        
+        /* Contact strip */
         .contact-strip {
-            padding: 80px 50px;
-            background: #111;
-            color: white;
+            padding: var(--space-xl) var(--space-lg);
+            background: var(--color-charcoal);
+            color: var(--color-white);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
+        
+        .contact-strip h2 {
+            color: var(--color-white);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .contact-strip p {
+            color: var(--color-light-gray);
+        }
+        
         .btn-studio {
-            background: white;
-            color: black;
+            background: var(--color-white);
+            color: var(--color-black);
             padding: 15px 40px;
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
-            font-family: 'Oswald', sans-serif;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            letter-spacing: 0.1em;
+            transition: all var(--transition-speed);
+            display: inline-block;
         }
-
+        
+        .btn-studio:hover {
+            background: var(--color-black);
+            color: var(--color-white);
+        }
+        
         /* Responsive */
         @media (max-width: 900px) {
-            .studio-hero { grid-template-columns: 1fr; height: auto; }
-            .hero-content { border-right: none; padding: 50px 20px; }
-            .hero-image-container { height: 400px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .work-grid { grid-template-columns: 1fr; }
-            .contact-strip { flex-direction: column; text-align: center; gap: 30px; }
+            .studio-hero {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            
+            .hero-content {
+                border-right: none;
+                padding: var(--space-lg) var(--space-sm);
+            }
+            
+            .hero-image-container {
+                height: 400px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .work-item:nth-child(2) {
+                grid-row: auto;
+                height: 400px;
+            }
+            
+            .contact-strip {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="nav-brand">ALL OF THE HUMANS / STUDIO</a>
-        <a href="index.html" class="back-link">Back to Main</a>
+        <a href="index.html" class="nav-brand">All of the Humans / Studio</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Back to Main</a>
+        </div>
     </nav>
 
     <header class="studio-hero">
         <div class="hero-content">
             <h1>Elevated<br>Visuals For<br>Brands.</h1>
             <p>We translate your physical product into digital assets. Clean, textured, and designed to convert.</p>
-            <a href="#contact" style="color: black; font-weight: bold; text-decoration: underline;">View Packages</a>
+            <a href="#contact">View Packages</a>
         </div>
         <div class="hero-image-container">
-            <img src="product.webp" class="hero-image" alt="Studio Product Shot">
+            <img src="product.webp" class="hero-image" alt="Studio product photography">
         </div>
     </header>
 
     <section class="services-section">
-        <h2 style="font-size: 2rem;">Capabilities</h2>
+        <h2>Capabilities</h2>
         <div class="services-grid">
             <div class="service-card">
                 <h3>Product Styling</h3>
@@ -195,30 +280,31 @@
     </section>
 
     <section class="work-section">
-        <div style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: end;">
-            <h2 style="font-size: 2rem;">Recent Commissions</h2>
+        <div class="work-header">
+            <h2>Recent Commissions</h2>
             <span>2024-2025</span>
         </div>
         <div class="work-grid">
             <div class="work-item">
-                <img src="product.webp" alt="Project 1">
+                <img src="product.webp" alt="Commercial photography project">
             </div>
             <div class="work-item">
-                <img src="product.webp" style="object-position: left;" alt="Project 2">
+                <img src="product.webp" style="object-position: left;" alt="Product styling project">
             </div>
             <div class="work-item">
-                <img src="product.webp" style="filter: brightness(0.9);" alt="Project 3">
+                <img src="product.webp" style="filter: brightness(0.9);" alt="Brand photography project">
             </div>
         </div>
     </section>
 
     <section class="contact-strip" id="contact">
         <div>
-            <h2 style="color: white; margin-bottom: 10px;">Ready to elevate your brand?</h2>
-            <p style="color: #999;">Accepting new commercial clients for Q3.</p>
+            <h2>Ready to elevate your brand?</h2>
+            <p>Accepting new commercial clients for Q3.</p>
         </div>
-        <a href="#" class="btn-studio">Request Rate Card</a>
+        <a href="#contact" class="btn-studio">Request Rate Card</a>
     </section>
 
+    <script src="custom.js"></script>
 </body>
 </html>
