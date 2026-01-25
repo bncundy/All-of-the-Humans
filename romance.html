@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Thoughtfully designed wedding photography experiences capturing your celebration with elegance and authenticity.">
     <title>Weddings & Romance | All of the Humans</title>
+    
     <link rel="stylesheet" href="custom.css">
+    
     <style>
-        /* Page-specific styles */
-        body {
-            background-color: var(--color-paper);
-        }
+        /* --- PAGE SPECIFIC OVERRIDES --- */
+        body { background-color: var(--color-paper); }
         
-        /* Hero section */
         .luxury-hero {
             padding: 180px var(--container-padding) var(--space-2xl);
             min-height: 90vh;
@@ -47,12 +46,8 @@
             filter: grayscale(100%);
             transition: filter 1s ease;
         }
+        .strip-img:hover { filter: grayscale(0%); }
         
-        .strip-img:hover {
-            filter: grayscale(0%);
-        }
-        
-        /* Philosophy section */
         .philosophy-section {
             padding: var(--space-3xl) var(--container-padding);
             text-align: center;
@@ -60,20 +55,10 @@
             margin: 0 auto;
         }
         
-        .philosophy-section h2 {
-            font-size: var(--text-3xl);
-            margin-bottom: 30px;
-        }
+        .philosophy-section h2 { font-size: var(--text-3xl); margin-bottom: 30px; }
+        .philosophy-section .serif { font-size: var(--text-lg); color: var(--color-dark-gray); }
         
-        .philosophy-section .serif {
-            font-size: var(--text-lg);
-            color: var(--color-dark-gray);
-        }
-        
-        /* Services grid */
-        .services-container {
-            border-top: var(--border-width) solid var(--color-border);
-        }
+        .services-container { border-top: var(--border-width) solid var(--color-border); }
         
         .service-row {
             display: grid;
@@ -89,15 +74,9 @@
             justify-content: space-between;
         }
         
-        .service-info.left {
-            border-right: var(--border-width) solid var(--color-border);
-        }
+        .service-info.left { border-right: var(--border-width) solid var(--color-border); }
         
-        .service-img-block {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-        }
+        .service-img-block { height: 100%; width: 100%; overflow: hidden; }
         
         .service-img {
             width: 100%;
@@ -106,10 +85,7 @@
             filter: brightness(0.95);
             transition: transform var(--transition-slow);
         }
-        
-        .service-img:hover {
-            transform: scale(1.02);
-        }
+        .service-img:hover { transform: scale(1.02); }
         
         .service-number {
             font-family: var(--font-serif);
@@ -120,9 +96,7 @@
             color: var(--color-light-gray);
         }
         
-        .service-info h2 {
-            margin-bottom: var(--space-sm);
-        }
+        .service-info h2 { margin-bottom: var(--space-sm); }
         
         .service-info p {
             margin-top: var(--space-sm);
@@ -137,13 +111,8 @@
             color: var(--color-medium-gray);
             line-height: 2;
         }
+        .service-features li::before { content: "+ "; margin-right: 5px; }
         
-        .service-features li::before {
-            content: "+ ";
-            margin-right: 5px;
-        }
-        
-        /* Footer grid */
         .contact-footer {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -158,63 +127,22 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        
-        .footer-col:last-child {
-            border-right: none;
-        }
-        
-        .footer-col.wide {
-            grid-column: span 2;
-        }
-        
-        .footer-col h2 {
-            font-size: var(--text-2xl);
-            margin-top: var(--space-xs);
-        }
+        .footer-col:last-child { border-right: none; }
+        .footer-col.wide { grid-column: span 2; }
+        .footer-col h2 { font-size: var(--text-2xl); margin-top: var(--space-xs); }
         
         /* Responsive */
         @media (max-width: 900px) {
-            .hero-statement h1 {
-                font-size: var(--text-3xl);
-            }
-            
-            .hero-img-strip {
-                flex-direction: column;
-                height: auto;
-            }
-            
-            .strip-img {
-                height: 300px;
-                width: 100%;
-            }
-            
-            .service-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .service-info.left {
-                border-right: none;
-            }
-            
-            .service-info {
-                padding: var(--space-lg) 30px;
-            }
-            
-            .service-img-block {
-                height: 300px;
-            }
-            
-            .contact-footer {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .footer-col:nth-child(2) {
-                border-right: none;
-            }
-            
-            .footer-col.wide {
-                grid-column: span 2;
-            }
+            .hero-statement h1 { font-size: var(--text-3xl); }
+            .hero-img-strip { flex-direction: column; height: auto; }
+            .strip-img { height: 300px; width: 100%; }
+            .service-row { grid-template-columns: 1fr; }
+            .service-info.left { border-right: none; }
+            .service-info { padding: var(--space-lg) 30px; }
+            .service-img-block { height: 300px; }
+            .contact-footer { grid-template-columns: 1fr 1fr; }
+            .footer-col:nth-child(2) { border-right: none; }
+            .footer-col.wide { grid-column: span 2; }
         }
     </style>
 </head>
@@ -224,8 +152,8 @@
         <a href="index.html" class="nav-logo">all of the humans</a>
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
-            <a href="#portfolio" class="nav-link">Journal</a>
-            <a href="#contact" class="nav-link">Inquire</a>
+            <a href="#" class="nav-link">Journal</a>
+            <a href="romance-inquiry.html" class="nav-link">Inquire</a>
         </div>
     </nav>
 
@@ -237,21 +165,16 @@
                 There is a moment of discovery, when anticipation begins and the atmosphere quietly reveals itself. We document the details that shape this impression, transforming your story into a refined, cohesive legacy.
             </p>
         </div>
-        
-        <div class="hero-img-strip">
-            <img src="romance.png" class="strip-img" style="object-position: top;" alt="Wedding ceremony detail">
-            <img src="romance.png" class="strip-img" style="object-position: center;" alt="Wedding couple portrait">
-        </div>
+        <div class="hero-img-strip" id="hero-strip"></div>
     </header>
 
     <section class="philosophy-section">
         <span class="label-text">Our Philosophy</span>
         <h2>"Unfolding with elegance, restraint, and timeless beauty."</h2>
-        <p class="serif italic">— The Studio</p>
+        <p class="serif italic">— The Branding</p>
     </section>
 
     <section class="services-container">
-        
         <div class="service-row">
             <div class="service-info left">
                 <div>
@@ -266,17 +189,13 @@
                         <li>Private Online Gallery</li>
                     </ul>
                 </div>
-                <a href="#contact" class="btn-text">View the Collection</a>
+                <a href="romance-inquiry.html" class="btn-text">View the Collection</a>
             </div>
-            <div class="service-img-block">
-                <img src="romance.png" class="service-img" alt="Wedding day photography">
-            </div>
+            <div class="service-img-block" id="service-img-1"></div>
         </div>
 
         <div class="service-row">
-            <div class="service-img-block">
-                <img src="romance.png" class="service-img" style="filter: grayscale(100%);" alt="Elopement photography">
-            </div>
+            <div class="service-img-block" id="service-img-2"></div>
             <div class="service-info">
                 <div>
                     <span class="service-number">(no. 02)</span>
@@ -290,12 +209,18 @@
                         <li>Heirloom Print Box</li>
                     </ul>
                 </div>
-                <a href="#contact" class="btn-text">View the Collection</a>
+                <a href="romance-inquiry.html" class="btn-text">View the Collection</a>
             </div>
         </div>
-
     </section>
 
+    <section class="gallery-section">
+        <h2 style="text-align: center; margin-bottom: 60px; font-size: 1.5rem; letter-spacing: 0.2em; text-transform: uppercase;">
+            Selected Works
+        </h2>
+        <div class="gallery-grid" id="gallery-container"></div>
+    </section>
+    
     <footer class="contact-footer" id="contact">
         <div class="footer-col">
             <span class="label-text">Explore</span>
@@ -315,10 +240,77 @@
         <div class="footer-col wide">
             <span class="label-text">Inquire</span>
             <h2>Have a date in mind?</h2>
-            <a href="#contact" class="btn-text" style="margin-top: var(--space-sm);">Start the Conversation</a>
+            <a href="romance-inquiry.html" class="btn-text" style="margin-top: var(--space-sm);">Start the Conversation</a>
         </div>
     </footer>
 
-    <script src="custom.js"></script>
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script>
+        // --- CONFIGURATION FOR ROMANCE PAGE ---
+        const galleryConfig = {
+            folderName: 'romance',
+            filePrefix: 'romance',
+            imageCount: 26,
+            heroImages: [1, 2],
+            serviceImages: [3, 4]
+        };
+
+        // --- DYNAMIC LOADER ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load Hero Images
+            const heroStrip = document.getElementById('hero-strip');
+            let heroHtml = '';
+            galleryConfig.heroImages.forEach(num => {
+                 const formattedNum = num < 10 ? '0' + num : num;
+                 const fileName = `${galleryConfig.filePrefix}-${formattedNum}.jpg`;
+                 heroHtml += `<img src="images/${galleryConfig.folderName}/${fileName}" class="strip-img" alt="Wedding Detail">`;
+            });
+            heroStrip.innerHTML = heroHtml;
+
+            // Load Service Images
+            const serviceImg1 = document.getElementById('service-img-1');
+            const serviceImg2 = document.getElementById('service-img-2');
+            
+            if (galleryConfig.serviceImages.length >= 2) {
+                 const num1 = galleryConfig.serviceImages[0] < 10 ? '0' + galleryConfig.serviceImages[0] : galleryConfig.serviceImages[0];
+                 const fileName1 = `${galleryConfig.filePrefix}-${num1}.jpg`;
+                 serviceImg1.innerHTML = `<img src="images/${galleryConfig.folderName}/${fileName1}" class="service-img" alt="Wedding Day">`;
+
+                 const num2 = galleryConfig.serviceImages[1] < 10 ? '0' + galleryConfig.serviceImages[1] : galleryConfig.serviceImages[1];
+                 const fileName2 = `${galleryConfig.filePrefix}-${num2}.jpg`;
+                 serviceImg2.innerHTML = `<img src="images/${galleryConfig.folderName}/${fileName2}" class="service-img" style="filter: grayscale(100%);" alt="Elopement">`;
+            }
+
+            // Load Gallery Grid
+            const container = document.getElementById('gallery-container');
+            let htmlContent = '';
+            for (let i = 1; i <= galleryConfig.imageCount; i++) {
+                const num = i < 10 ? '0' + i : i; 
+                const fileName = `${galleryConfig.filePrefix}-${num}.jpg`;
+                htmlContent += `
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="images/${galleryConfig.folderName}/${fileName}" loading="lazy" alt="Romance Portfolio ${i}">
+                    </div>
+                `;
+            }
+            container.innerHTML = htmlContent;
+        });
+
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; 
+        }
+    </script>
+
 </body>
 </html>

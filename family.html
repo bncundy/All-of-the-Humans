@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Documentary family photography capturing authentic moments, maternity milestones, and newborn stories.">
     <title>Family & Legacy | All of the Humans</title>
+    
     <link rel="stylesheet" href="custom.css">
+    
     <style>
-        /* Page-specific styles */
-        body {
-            background-color: var(--color-cream);
-        }
+        /* --- PAGE SPECIFIC OVERRIDES --- */
+        body { background-color: var(--color-cream); }
         
-        /* Editorial hero layout */
+        /* Editorial Hero Layout */
         .editorial-hero {
             display: grid;
             grid-template-columns: 45% 55%;
@@ -21,7 +21,7 @@
             padding-top: var(--space-3xl);
         }
         
-        /* Massive header */
+        /* Massive Header */
         .massive-header {
             position: absolute;
             top: 100px;
@@ -36,7 +36,7 @@
             font-weight: 400;
         }
         
-        /* Left content area */
+        /* Left Content Area */
         .hero-left {
             padding: var(--space-md) var(--space-lg);
             display: flex;
@@ -63,33 +63,21 @@
             color: var(--color-dark-gray);
         }
         
-        /* Right image area */
+        /* Right Image Area */
         .hero-right {
             position: relative;
             height: 100%;
             overflow: hidden;
         }
         
-        .hero-img {
+        .hero-right .hero-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
         }
         
-        .floating-caption {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: transparent;
-            color: var(--color-black);
-            font-size: var(--text-sm);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            z-index: 20;
-        }
-        
-        /* Steps section */
+        /* Steps Section */
         .steps-section {
             padding: var(--space-2xl) var(--space-lg);
             border-top: var(--border-width) solid var(--color-border-light);
@@ -106,6 +94,7 @@
             font-size: var(--text-2xl);
             margin-bottom: var(--space-sm);
             font-style: italic;
+            font-family: var(--font-serif-alt);
         }
         
         .step-card p {
@@ -114,12 +103,9 @@
             max-width: 250px;
         }
         
-        /* Offset middle card for visual interest */
-        .step-card:nth-child(2) {
-            margin-top: var(--space-xl);
-        }
+        .step-card:nth-child(2) { margin-top: var(--space-xl); }
         
-        /* Footer */
+        /* Minimal Footer */
         .footer-minimal {
             padding: var(--space-lg);
             border-top: var(--border-width) solid var(--color-border-light);
@@ -128,53 +114,18 @@
             align-items: center;
         }
         
-        .footer-minimal .serif {
-            font-family: var(--font-serif-alt);
-            font-style: italic;
-        }
+        .footer-minimal .serif { font-family: var(--font-serif-alt); font-style: italic; }
         
         /* Responsive */
         @media (max-width: 900px) {
-            .editorial-hero {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto 50vh;
-                padding-top: var(--space-xl);
-            }
-            
-            .massive-header {
-                font-size: 15vw;
-                top: 80px;
-                left: 20px;
-            }
-            
-            .hero-left {
-                order: 2;
-                padding: var(--space-md) var(--space-sm);
-            }
-            
-            .hero-right {
-                order: 1;
-                height: 50vh;
-            }
-            
-            .text-columns {
-                grid-template-columns: 1fr;
-            }
-            
-            .steps-grid {
-                grid-template-columns: 1fr;
-                margin-top: 0;
-            }
-            
-            .step-card:nth-child(2) {
-                margin-top: 0;
-            }
-            
-            .footer-minimal {
-                flex-direction: column;
-                gap: var(--space-md);
-                text-align: center;
-            }
+            .editorial-hero { grid-template-columns: 1fr; grid-template-rows: auto 50vh; padding-top: var(--space-xl); }
+            .massive-header { font-size: 15vw; top: 80px; left: 20px; }
+            .hero-left { order: 2; padding: var(--space-md) var(--space-sm); }
+            .hero-right { order: 1; height: 50vh; }
+            .text-columns { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr; margin-top: 0; }
+            .step-card:nth-child(2) { margin-top: 0; }
+            .footer-minimal { flex-direction: column; gap: var(--space-md); text-align: center; }
         }
     </style>
 </head>
@@ -186,18 +137,18 @@
         <a href="index.html" class="nav-logo">all of the humans</a>
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Journal</a>
+            <a href="family-inquiry.html" class="nav-link">Inquire</a>
         </div>
     </nav>
 
     <h1 class="massive-header">FAMILY</h1>
 
     <section class="editorial-hero">
-        
         <div class="hero-left">
             <h2 class="sub-headline">
                 That feeling when time softens, moments linger, and your story comes alive
             </h2>
-            
             <div class="text-columns">
                 <p>
                     I'm finding inspiration in artful, stripped down, raw imagery that has feeling behind it. If I had to choose, I want honest over perfect.
@@ -208,27 +159,20 @@
             </div>
         </div>
 
-        <div class="hero-right">
-            <span class="floating-caption">Booking Process</span>
-            <img src="family.png" class="hero-img" alt="Family documentary photography">
-        </div>
-
+        <div class="hero-right" id="hero-container"></div>
     </section>
 
     <section class="steps-section">
         <span class="label-text">The Experience</span>
-        
         <div class="steps-grid">
             <div class="step-card">
                 <h3>01. Connect</h3>
                 <p>We start with a conversation, not a contract. Let's see if our vibes align.</p>
             </div>
-            
             <div class="step-card">
                 <h3>02. Create</h3>
                 <p>No stiff posing. Just you, your people, and a space to be yourselves.</p>
             </div>
-            
             <div class="step-card">
                 <h3>03. Keep</h3>
                 <p>Heirlooms delivered digitally and in print, ready to outlast us all.</p>
@@ -236,11 +180,70 @@
         </div>
     </section>
 
+    <section class="gallery-section">
+        <h2 style="text-align: center; margin-bottom: 60px; font-size: 1.5rem; letter-spacing: 0.2em; text-transform: uppercase;">
+            Selected Works
+        </h2>
+        <div class="gallery-grid" id="gallery-container"></div>
+    </section>
+
     <footer class="footer-minimal">
         <span class="serif">Based in the Quad Cities / Available Worldwide</span>
-        <a href="#contact" class="btn-text">Start Your Story →</a>
+        <a href="family-inquiry.html" class="btn-text">Start Your Story →</a>
     </footer>
 
-    <script src="custom.js"></script>
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script>
+        // --- CONFIGURATION FOR FAMILY PAGE ---
+        const galleryConfig = {
+            folderName: 'family',
+            filePrefix: 'family',
+            imageCount: 72,
+            heroImage: 14 // Update this number to change hero image
+        };
+
+        // --- DYNAMIC LOADER ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Load Hero Image
+            const heroContainer = document.getElementById('hero-container');
+            const heroNum = galleryConfig.heroImage < 10 ? '0' + galleryConfig.heroImage : galleryConfig.heroImage;
+            const heroFileName = `${galleryConfig.filePrefix}-${heroNum}.jpg`;
+            
+            heroContainer.innerHTML = `
+                <img src="images/${galleryConfig.folderName}/${heroFileName}" class="hero-img" alt="Family documentary photography">
+            `;
+
+            // 2. Load Gallery
+            const container = document.getElementById('gallery-container');
+            let htmlContent = '';
+            for (let i = 1; i <= galleryConfig.imageCount; i++) {
+                const num = i < 10 ? '0' + i : i; 
+                const fileName = `${galleryConfig.filePrefix}-${num}.jpg`;
+                htmlContent += `
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="images/${galleryConfig.folderName}/${fileName}" loading="lazy" alt="Family Portfolio ${i}">
+                    </div>
+                `;
+            }
+            container.innerHTML = htmlContent;
+        });
+
+        // --- LIGHTBOX FUNCTIONS ---
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; 
+        }
+    </script>
+
 </body>
 </html>

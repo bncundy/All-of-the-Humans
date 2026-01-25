@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Story | Family & Legacy</title>
+    <link rel="stylesheet" href="custom.css">
+    <style>
+        body { background-color: var(--color-cream); }
+        
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            padding-top: 80px; /* Nav spacing */
+        }
+
+        .left-panel {
+            padding: var(--space-2xl);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-panel {
+            padding: var(--space-2xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .big-statement {
+            font-family: var(--font-serif-alt);
+            font-size: var(--text-5xl);
+            line-height: 1.1;
+            margin-bottom: var(--space-lg);
+        }
+
+        .process-list {
+            list-style: none;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-dark-gray);
+        }
+        .process-list li { margin-bottom: 10px; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .split-layout { grid-template-columns: 1fr; }
+            .left-panel { padding-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">all of the humans</a>
+        <div class="nav-links">
+            <a href="family.html" class="nav-link">Back to Family</a>
+        </div>
+    </nav>
+
+    <div class="split-layout">
+        <div class="left-panel">
+            <h1 class="big-statement">Let's make<br>something<br>real.</h1>
+            <ul class="process-list">
+                <li>01. Tell me about your humans</li>
+                <li>02. Pick a date</li>
+                <li>03. Make memories</li>
+            </ul>
+        </div>
+
+        <div class="right-panel">
+            <div style="width: 100%; max-width: 500px;">
+                <p style="text-align: center; color: #999; border: 2px dashed #ccc; padding: 40px;">
+                    [ VSCO FAMILY FORM HERE ]
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

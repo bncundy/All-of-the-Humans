@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Commercial photography and product styling for brands. Elevated visuals designed to convert.">
+    <title>The Branding | All of the Humans</title>
+    
+    <link rel="stylesheet" href="custom.css">
+    
+    <style>
+        /* --- PAGE SPECIFIC OVERRIDES --- */
+        nav { background: rgba(255, 255, 255, 0.98); }
+        
+        .studio-hero {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            height: 80vh;
+            border-bottom: var(--border-width) solid var(--color-border-light);
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            padding: var(--space-xl);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--border-width) solid var(--color-border-light);
+        }
+        
+        .hero-content h1 {
+            font-family: var(--font-sans);
+            font-size: var(--text-4xl);
+            line-height: 0.9;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        
+        .hero-content p {
+            font-size: var(--text-lg);
+            color: var(--color-medium-gray);
+            margin-bottom: var(--space-md);
+        }
+        
+        .services-section { padding: var(--space-2xl) var(--space-lg); }
+        .services-section h2 { font-family: var(--font-sans); text-transform: uppercase; margin-bottom: var(--space-lg); }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+        
+        .service-card {
+            border-top: 4px solid var(--color-black);
+            padding-top: var(--space-sm);
+        }
+        
+        .service-card h3 { font-family: var(--font-sans); font-size: var(--text-xl); text-transform: uppercase; margin-bottom: 15px; }
+        
+        .contact-strip {
+            padding: var(--space-xl) var(--space-lg);
+            background: var(--color-charcoal);
+            color: var(--color-white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .btn-studio {
+            background: var(--color-white);
+            color: var(--color-black);
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            letter-spacing: 0.1em;
+            transition: all var(--transition-speed);
+            display: inline-block;
+        }
+        .btn-studio:hover { background: var(--color-black); color: var(--color-white); }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .studio-hero { grid-template-columns: 1fr; height: auto; }
+            .hero-content { border-right: none; padding: var(--space-lg) var(--space-sm); }
+            .services-grid { grid-template-columns: 1fr; }
+            .contact-strip { flex-direction: column; text-align: center; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">all of the humans</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Journal</a>
+            <a href="branding-inquiry.html" class="nav-link">Inquire</a>
+        </div>
+    </nav>
+
+    <header class="studio-hero">
+        <div class="hero-content">
+            <h1>Elevated<br>Visuals For<br>Brands.</h1>
+            <p>We translate your physical product into digital assets. Clean, textured, and designed to convert.</p>
+            <a href="branding-inquiry.html" style="color: black; font-weight: bold; text-decoration: underline;">View Packages</a>
+        </div>
+        <div class="hero-image-container">
+            <img src="images/branding/branding-25.jpg" class="hero-image" alt="Branding photography" style="object-position: bottom;">
+        </div>
+    </header>
+
+    <section class="services-section">
+        <h2>Capabilities</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Product Styling</h3>
+                <p>Full set design and styling. We source the props, build the scene, and create the lighting to match your brand identity.</p>
+            </div>
+            <div class="service-card">
+                <h3>E-Commerce</h3>
+                <p>Clean, white-background or textured catalogue shots designed for Shopify, Amazon, and Squarespace listings.</p>
+            </div>
+            <div class="service-card">
+                <h3>Social Content</h3>
+                <p>Vertical video (Reels/TikTok) and lifestyle imagery created specifically for high-engagement social media campaigns.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2 style="text-align: center; margin-bottom: 60px; font-size: 1.5rem; letter-spacing: 0.2em; text-transform: uppercase;">
+            Selected Works
+        </h2>
+        <div class="gallery-grid" id="gallery-container"></div>
+    </section>
+
+    <section class="contact-strip" id="contact">
+        <div>
+            <h2 style="color: white;">Ready to elevate your brand?</h2>
+            <p style="color: #999;">Accepting new commercial clients for Q3.</p>
+        </div>
+        <a href="branding-inquiry.html" class="btn-studio">Request Rate Card</a>
+    </section>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script>
+        // --- CONFIGURATION FOR BRANDING PAGE ---
+        const galleryConfig = {
+            folderName: 'branding',
+            filePrefix: 'branding',
+            imageCount: 30
+        };
+
+        // --- DYNAMIC LOADER ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('gallery-container');
+            let htmlContent = '';
+            for (let i = 1; i <= galleryConfig.imageCount; i++) {
+                const num = i < 10 ? '0' + i : i; 
+                const fileName = `${galleryConfig.filePrefix}-${num}.jpg`;
+                htmlContent += `
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="images/${galleryConfig.folderName}/${fileName}" loading="lazy" alt="Branding Portfolio ${i}">
+                    </div>
+                `;
+            }
+            container.innerHTML = htmlContent;
+        });
+
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; 
+        }
+    </script>
+
+</body>
+</html>
