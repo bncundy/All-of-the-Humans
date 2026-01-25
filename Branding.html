@@ -12,20 +12,29 @@
         /* --- PAGE SPECIFIC OVERRIDES --- */
         nav { background: rgba(255, 255, 255, 0.98); }
         
+        /* 1. HERO SECTION */
         .studio-hero {
             display: grid;
             grid-template-columns: 40% 60%;
             height: 80vh;
             border-bottom: var(--border-width) solid var(--color-border-light);
             margin-top: 70px;
+            overflow: hidden; /* Force the image to stop exactly at the line */
+            position: relative;
         }
         
         .hero-content {
             padding: var(--space-xl);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            
+            /* UPDATED: Moves text to the top */
+            justify-content: flex-start; 
+            padding-top: 180px; /* Pushes H1 "Way Higher" */
+            
             border-right: var(--border-width) solid var(--color-border-light);
+            background: var(--color-white); /* Ensures text side is clean white */
+            z-index: 10;
         }
         
         .hero-content h1 {
@@ -41,9 +50,37 @@
             color: var(--color-medium-gray);
             margin-bottom: var(--space-md);
         }
+
+        .hero-image-container {
+            width: 100%;
+            height: 100%;
+            background: #f0f0f0; /* Placeholder color while loading */
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Keeps the bottom focus as requested previously */
+            object-position: bottom; 
+            display: block;
+        }
         
-        .services-section { padding: var(--space-2xl) var(--space-lg); }
-        .services-section h2 { font-family: var(--font-sans); text-transform: uppercase; margin-bottom: var(--space-lg); }
+        /* 2. SERVICES SECTION */
+        .services-section { 
+            padding: var(--space-2xl) var(--space-lg); 
+            
+            /* UPDATED: Forces a clean white backdrop so image cannot bleed through */
+            background-color: var(--color-white); 
+            position: relative;
+            z-index: 20; 
+        }
+
+        .services-section h2 { 
+            font-family: var(--font-sans); 
+            text-transform: uppercase; 
+            margin-bottom: var(--space-lg); 
+        }
         
         .services-grid {
             display: grid;
@@ -56,7 +93,12 @@
             padding-top: var(--space-sm);
         }
         
-        .service-card h3 { font-family: var(--font-sans); font-size: var(--text-xl); text-transform: uppercase; margin-bottom: 15px; }
+        .service-card h3 { 
+            font-family: var(--font-sans); 
+            font-size: var(--text-xl); 
+            text-transform: uppercase; 
+            margin-bottom: 15px; 
+        }
         
         .contact-strip {
             padding: var(--space-xl) var(--space-lg);
@@ -85,7 +127,12 @@
         /* Responsive */
         @media (max-width: 900px) {
             .studio-hero { grid-template-columns: 1fr; height: auto; }
-            .hero-content { border-right: none; padding: var(--space-lg) var(--space-sm); }
+            .hero-content { 
+                border-right: none; 
+                padding: var(--space-lg) var(--space-sm);
+                padding-top: 100px; /* Less padding on mobile */
+            }
+            .hero-image-container { height: 50vh; }
             .services-grid { grid-template-columns: 1fr; }
             .contact-strip { flex-direction: column; text-align: center; gap: 30px; }
         }
@@ -109,7 +156,7 @@
             <a href="branding-inquiry.html" style="color: black; font-weight: bold; text-decoration: underline;">View Packages</a>
         </div>
         <div class="hero-image-container">
-            <img src="images/branding/branding-25.jpg" class="hero-image" alt="Branding photography" style="object-position: bottom;">
+            <img src="images/branding/branding-25.jpg" class="hero-image" alt="Branding photography">
         </div>
     </header>
 
