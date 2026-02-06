@@ -93,6 +93,16 @@ p {
     margin-bottom: 25px; 
 }
 
+/* NEW: Specific Typography Class for Headers */
+.tight-italic-header {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    /* drastically reduced spacing */
+    letter-spacing: -0.04em; 
+    line-height: 1;
+}
+
 .serif { font-family: var(--font-serif); }
 .serif-alt { font-family: var(--font-serif-alt); }
 .sans { font-family: var(--font-sans); }
@@ -146,7 +156,7 @@ nav {
 .hero-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 75vh 25vh;
+    grid-template-rows: 69vh 31vh;
     height: 100vh;
     width: 100%;
     overflow: hidden; 
@@ -191,10 +201,10 @@ nav {
     padding: var(--space-sm);
 }
 
+/* Homepage H2s will use the utility class in HTML */
 .content h2 {
     color: var(--color-white); 
-    font-size: var(--text-4xl);
-    font-style: italic;
+    font-size: var(--text-5xl);
 }
 
 .subtitle {
@@ -221,8 +231,13 @@ nav {
     grid-column: 1 / 3;
     grid-row: 2 / 3;
     border-top: 1px solid rgba(255,255,255,0.1);
+    /* Lowering the text block */
+    justify-content: flex-end; 
+    padding-bottom: -50px;
 }
-.product-section h2 { font-size: var(--text-3xl); font-style: normal; }
+/* Shift branding image focus */
+.product-section .img-wrapper img { object-position: center 20%; }
+
 
 /* Home Hover Effects */
 .hero-container:hover .hero-link .img-wrapper img { opacity: 0.3; filter: grayscale(100%); }
@@ -265,6 +280,9 @@ nav {
   transition: opacity var(--transition-speed);
 }
 .btn-text:hover { opacity: 0.6; }
+/* Larger button for footer */
+.btn-text.large-link { font-size: var(--text-xl); border-width: 2px; }
+
 .btn-studio {
   background: var(--color-white);
   color: var(--color-black);
@@ -280,13 +298,25 @@ nav {
 }
 .btn-studio:hover { background: var(--color-black); color: var(--color-white); }
 
-/* Gallery Grid System */
+/* Gallery Grid System (Cobblestone style via columns) */
 .gallery-section { 
     background-color: transparent; 
     padding-top: 120px; /* Buffer for 'Selected Works' */
 }
-.gallery-grid { column-count: 3; column-gap: var(--space-sm); }
-.gallery-item { break-inside: avoid; margin-bottom: var(--space-sm); position: relative; overflow: hidden; cursor: pointer; }
+.gallery-grid { 
+    column-count: 3; 
+    column-gap: var(--space-sm); 
+}
+.gallery-item { 
+    break-inside: avoid; 
+    margin-bottom: var(--space-sm); 
+    position: relative; 
+    overflow: hidden; 
+    cursor: pointer; 
+    /* Ensures items don't get cut off incorrectly in column layout */
+    display: inline-block; 
+    width: 100%;
+}
 .gallery-item img {
   width: 100%;
   display: block;
@@ -325,26 +355,70 @@ nav {
   font-family: var(--font-sans);
 }
 
-/* Footer & Contact */
+/* --- FOOTER (FIXED) --- */
 footer, .contact-footer {
-  padding: var(--space-lg) var(--container-padding);
-  border-top: var(--border-width) solid var(--color-border);
+    padding: 100;
+    border-top: var(--border-width) solid var(--color-border-light);
+    margin-top: 0;
 }
-.footer-grid, .contact-footer { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); }
-.footer-col { 
-    padding: var(--space-md);
-    border-right: var(--border-width) solid var(--color-border);
-    min-height: 250px;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between; 
-}
-.footer-col:last-child { border-right: none; }
-.footer-col.wide { grid-column: span 2; }
-.footer-col h2 { font-size: var(--text-2xl); margin-top: var(--space-xs); }
-.footer-link { color: var(--color-medium-gray); text-decoration: none; font-size: var(--text-base); transition: color var(--transition-speed); }
-.footer-link:hover { color: var(--color-black); }
 
+.contact-footer { 
+    display: grid; 
+    /* Strictly enforce the 35% / 65% split */
+    grid-template-columns: 35% 65%; 
+    min-height: 250px;
+    width: 100%;
+    overflow: hidden; /* Stops giant images from breaking the layout */
+}
+
+/* LEFT COLUMN (Social) */
+.footer-col.social-only {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center */
+    align-items: center; /* Align left */
+    border-right: var(--border-width) solid var(--color-border-light);
+}
+
+/* THE ICON FIX - Forces the image to be small */
+.footer-col.social-only img {
+    width: 80px !important;  /* Forces size */
+    height: auto !important;
+    display: block;
+    margin-top: 15px;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+.footer-col.social-only img:hover { opacity: 1; }
+
+/* RIGHT COLUMN (Inquire) */
+.footer-col.wide-centered {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Footer Link Styling */
+.footer-link { 
+    color: var(--color-medium-gray); 
+    text-decoration: none; 
+    font-size: 0.9rem; 
+    margin-top: 10px;
+}
+
+/* Mobile Footer Reset */
+@media (max-width: 900px) {
+    .contact-footer { grid-template-columns: 1fr; }
+    .footer-col.social-only { 
+        border-right: none; 
+        border-bottom: var(--border-width) solid var(--color-border);
+        align-items: center; /* Center align on mobile */
+    }
+}
 
 /* --- FAMILY PAGE SPECIFIC STYLES --- */
 .vertical-label {
@@ -428,12 +502,12 @@ footer, .contact-footer {
 /* --- ROMANCE & JOURNAL HERO (NATURAL FLOW) --- */
 .luxury-hero {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Simple Side-by-Side */
-    height: auto;                   /* Let it grow as tall as needed */
-    min-height: 100vh;              /* At least full screen */
+    grid-template-columns: 1fr 1fr; 
+    height: auto;                   
+    min-height: 100vh;              
     width: 100%;
-    overflow: visible;              /* Never cut anything off */
-    align-items: stretch;           /* Makes sure both columns reach the bottom */
+    overflow: visible;              
+    align-items: stretch;           
 }
 
 /* LEFT COLUMN */
@@ -444,17 +518,34 @@ footer, .contact-footer {
 }
 
 .hero-statement {
-    /* Natural height based on text content */
-    padding: 180px var(--container-padding) 60px; 
+    /* Increased bottom padding for spacing before paragraph starts */
+    padding: 180px var(--container-padding) 200px; 
     background-color: var(--color-paper);
 }
-
-.img-slot-square {
-    /* Natural height based on image aspect ratio */
-    width: 100%;
-    height: auto; 
-    border-top: var(--border-width) solid var(--color-border);
+/* Add space specifically below the H1 in the hero */
+.hero-statement h1 {
+    margin-bottom: 55px;
 }
+
+
+/* UPDATED: Left Square Image Slot - Panoramic Crop */
+.img-slot-square {
+    width: 100%;
+    /* Fixed height to create the panoramic shape */
+    height: 350px; 
+    border-top: var(--border-width) solid var(--color-border);
+    overflow: hidden;
+    position: relative;
+}
+/* Specific override for this image to ensure cropping */
+.img-slot-square .fit-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Force it to fill the 350px height */
+    /* Focuses on the bottom, cropping the top 25% off */
+    object-position: center bottom; 
+}
+
 
 /* RIGHT COLUMN */
 .hero-col-right {
@@ -468,9 +559,9 @@ footer, .contact-footer {
     height: auto; /* Show the full vertical image */
 }
 
-/* THE FILLER TEXT BOX (Levels off the columns) */
+/* THE FILLER TEXT BOX */
 .hero-filler-right {
-    flex: 1; /* Expands to fill any empty space at the bottom */
+    flex: 1; 
     padding: 60px;
     display: flex;
     flex-direction: column;
@@ -479,18 +570,18 @@ footer, .contact-footer {
     text-align: center;
     background-color: var(--color-paper);
     border-top: var(--border-width) solid var(--color-border);
-    min-height: 200px; /* Ensures it has some presence even if not needed */
+    min-height: 200px; 
 }
 
-/* SHARED IMAGE STYLES - CRITICAL FOR NO CROPPING */
+/* SHARED IMAGE STYLES (General) */
 .fit-img {
     width: 100%;
-    height: auto;      /* This ensures the WHOLE image is seen */
+    height: auto;      
     display: block;
-    object-fit: contain; /* Double safety to prevent cropping */
+    object-fit: contain; 
 }
 
-/* --- SERVICE ROW STYLING (Newly Moved) --- */
+/* --- SERVICE ROW STYLING --- */
 .services-container { border-top: var(--border-width) solid var(--color-border); }
         
 .service-row {
@@ -529,7 +620,7 @@ footer, .contact-footer {
     color: var(--color-light-gray);
 }
 
-.service-info h2 { margin-bottom: var(--space-sm); }
+.service-info h2 { margin-bottom: var(--space-md); }
 
 .service-info p {
     margin-top: var(--space-sm);
@@ -627,9 +718,10 @@ footer, .contact-footer {
   :root { --container-padding: 20px; }
   .nav-links { gap: 15px; }
   .gallery-grid { column-count: 1; }
-  .footer-grid, .contact-footer { grid-template-columns: 1fr; }
-  .footer-col:nth-child(2) { border-right: none; }
-  .footer-col.wide { grid-column: span 1; }
+
+  /* Footer Mobile */
+  .contact-footer { grid-template-columns: 35% 65%; }
+  .footer-col.wide-centered { border-left: none; border-top: var(--border-width) solid var(--color-border); }
 
   /* Family Page Mobile */
   .editorial-hero { grid-template-columns: 1fr; grid-template-rows: auto 50vh; padding-top: var(--space-xl); }
@@ -644,11 +736,6 @@ footer, .contact-footer {
       height: auto;
   }
   .hero-col-left {
-      /* Reset the rigid grid for mobile */
-      display: flex;
-      flex-direction: column;
-      grid-template-rows: none;
-      height: auto;
       border-right: none;
   }
   .hero-statement {
@@ -661,7 +748,6 @@ footer, .contact-footer {
   .service-info { padding: var(--space-lg) 30px; }
   .service-img-block { height: 300px; }
 
-  /* Journal Mobile */
-  .profile-hero { grid-template-columns: 1fr; padding: 120px var(--container-padding); height: auto; }
+  /* About Mobile */
   .insight-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
 }
