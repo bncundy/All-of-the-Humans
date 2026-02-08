@@ -254,7 +254,6 @@ nav {
     /* 'center 20%' means: Center horizontally, show the slice 20% from the top */
     object-position: center 20%; 
 }
-}
 
 
 /* Home Hover Effects */
@@ -483,27 +482,54 @@ footer, .contact-footer {
     padding-top: var(--space-3xl);
 }
 
-.massive-header {
-    position: absolute;
-    top: 50px;
-    left: 5%;
-    width: 90%;
-    font-size: var(--text-hero);
-    z-index: 10;
-    pointer-events: none;
-    white-space: nowrap;
-    letter-spacing: -0.03em;
+/* Updated Split Header Logic */
+.split-header {
     font-family: var(--font-serif-alt);
-    font-weight: 350;
-    line-height: 1;
+    font-size: var(--text-hero);
+    line-height: 0.8; /* Tighter line height prevents vertical gaps */
+    position: absolute;
+    top: 125px; /* Fixed height for alignment */
+    width: 100%;
+    z-index: 20;
+    pointer-events: none;
+    margin: 0;
 }
 
+/* LEFT SIDE ("Family") */
+.split-header.left-side {
+    text-align: right;
+    right: 0;   /* Anchors to the right edge of the left column */
+    color: var(--color-black);
+    padding-right: 0;
+    /* Optical Adjustment: Nudges text slightly over the gap to "kiss" the other side */
+    transform: translateX(1.5vw); 
+    z-index: 25; /* Sits on top */
+}
+
+/* RIGHT SIDE ("Moments") */
+.split-header.right-side {
+    text-align: left;
+    left: 0;    /* Anchors to the left edge of the right column */
+    color: var(--color-white); /* Contrast color */
+    padding-left: 0;
+    /* Optical Adjustment: Pulls text slightly back to close the gap */
+    transform: translateX(-1.5vw); 
+}
+
+/* Update hero-left to remove padding */
 .hero-left {
-    padding: var(--space-md) var(--space-lg);
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center; 
     position: relative;
+}
+
+/* Wrapper for content text */
+.hero-left-content {
+    padding: var(--space-md) var(--space-lg);
+    padding-right: 0; 
+    margin-top: 200px; 
 }
 
 .sub-headline {
@@ -584,6 +610,16 @@ footer, .contact-footer {
     object-position: center bottom; 
 }
 
+/* UPDATED: second for About page */
+.img-slot-square2 {
+    width: 300px;
+    /* Fixed height to create the panoramic shape */
+    height: 300px; 
+    border-top: var(--border-width) solid var(--color-border);
+    overflow: hidden;
+    position: relative;
+    left: 40px; 
+}
 
 /* RIGHT COLUMN */
 .hero-col-right {
@@ -763,8 +799,15 @@ footer, .contact-footer {
 
   /* Family Page Mobile */
   .editorial-hero { grid-template-columns: 1fr; grid-template-rows: auto 50vh; padding-top: var(--space-xl); }
-  .massive-header { font-size: 15vw; top: 80px; left: 20px; }
-  .hero-left { order: 2; padding: var(--space-md) var(--space-sm); }
+  
+  /* UPDATED: Split header mobile styles */
+  .split-header { font-size: 15vw; top: 80px; position: absolute; }
+  .split-header.left-side { text-align: center; right: auto; width: 100%; transform: none; }
+  .split-header.right-side { display: none; }
+
+  .hero-left { order: 2; padding: 0; }
+  .hero-left-content { padding: var(--space-md) var(--space-sm); margin-top: 0; }
+  
   .hero-right { order: 1; height: 50vh; }
   .text-columns { grid-template-columns: 1fr; }
   

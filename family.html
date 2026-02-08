@@ -15,36 +15,72 @@
         /* Editorial Hero Layout */
         .editorial-hero {
             display: grid;
+            /* 45% Left / 55% Right Split */
             grid-template-columns: 45% 55%;
             min-height: 100vh;
             position: relative;
             padding-top: var(--space-3xl);
         }
         
-        /* Massive Header */
-        .massive-header {
-            position: absolute;
-            top: 125px;
-            left: 5%;
-            width: 90%;
-            font-size: var(--text-hero);
-            z-index: 10;
-            pointer-events: none;
-            white-space: nowrap;
-            letter-spacing: -0.03em;
-            font-family: var(--font-serif-alt);
-            font-weight: 400;
-        }
-        
-        /* Left Content Area */
+        /* LEFT COLUMN STYLES */
         .hero-left {
-            padding: var(--space-md) var(--space-lg);
+            /* REMOVED PADDING: Allows text to touch the right edge */
+            padding: 0;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: center;
             position: relative;
         }
+
+        /* Wrapper for the bio text so it still has padding */
+        .hero-left-content {
+            padding: var(--space-md) var(--space-lg);
+            padding-right: 0; /* Keep right side clear for the header alignment */
+            margin-top: 150px; /* Push content down below the big header */
+        }
         
+        /* RIGHT COLUMN STYLES */
+        .hero-right {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        /* THE SPLIT HEADER (The Magic Logic) */
+        .split-header {
+            font-family: var(--font-serif-alt);
+            font-size: var(--text-hero);
+            line-height: 0.8; 
+            position: absolute;
+            top: 15px; /* Aligns both sides vertically */
+            width: 100%;
+            z-index: 20;
+            pointer-events: none;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        /* "family" - Aligns to the Right of the Left Column */
+        .split-header.left-side {
+            text-align: right;
+            right: 0;
+            color: var(--color-black);
+            padding-right: 25px;
+            /* Optical adjustment to slightly cross the gap */
+            transform: translateX(1vw); 
+        }
+
+        /* "moments" - Aligns to the Left of the Right Column */
+        .split-header.right-side {
+            text-align: left;
+            left: 0;
+            color: var(--color-white);
+            padding-left: 15px;
+            /* Optical adjustment to slightly cross the gap */
+            transform: translateX(-1vw);
+        }
+        
+        /* Content Styles */
         .sub-headline {
             font-size: var(--text-xl);
             text-transform: uppercase;
@@ -61,20 +97,6 @@
             gap: var(--space-md);
             font-size: var(--text-base);
             color: var(--color-dark-gray);
-        }
-        
-        /* Right Image Area */
-        .hero-right {
-            position: relative;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .hero-right .hero-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
         }
         
         /* Steps Section */
@@ -105,27 +127,22 @@
         
         .step-card:nth-child(2) { margin-top: var(--space-xl); }
         
-        /* Minimal Footer */
-        .footer-minimal {
-            padding: var(--space-lg);
-            border-top: var(--border-width) solid var(--color-border-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .footer-minimal .serif { font-family: var(--font-serif-alt); font-style: italic; }
-        
         /* Responsive */
         @media (max-width: 900px) {
             .editorial-hero { grid-template-columns: 1fr; grid-template-rows: auto 50vh; padding-top: var(--space-xl); }
-            .massive-header { font-size: 15vw; top: 80px; left: 20px; }
-            .hero-left { order: 2; padding: var(--space-md) var(--space-sm); }
+            
+            /* Mobile Header Fix */
+            .split-header { font-size: 15vw; top: 80px; position: absolute; }
+            .split-header.left-side { text-align: center; right: auto; width: 100%; transform: none; }
+            .split-header.right-side { display: none; } /* Hide "moments" on mobile if it overlaps poorly */
+
+            .hero-left { order: 2; padding: 0; }
+            .hero-left-content { padding: var(--space-md) var(--space-sm); margin-top: 0; }
             .hero-right { order: 1; height: 50vh; }
+            
             .text-columns { grid-template-columns: 1fr; }
             .steps-grid { grid-template-columns: 1fr; margin-top: 0; }
             .step-card:nth-child(2) { margin-top: 0; }
-            .footer-minimal { flex-direction: column; gap: var(--space-md); text-align: center; }
         }
     </style>
 </head>
@@ -134,49 +151,58 @@
     <div class="vertical-label">The Memories</div>
 
     <nav>
-        <a href="AOTH.html" class="nav-logo">all of the humans</a>
+        <a href="index.html" class="nav-logo">all of the humans</a>
         <div class="nav-links">
-            <a href="AOTH.html" class="nav-link">Home</a>
-            <a href="#" class="nav-link">Journal</a>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
             <a href="family-inquiry.html" class="nav-link">Inquire</a>
         </div>
     </nav>
 
-    <h1 class="massive-header">
-        <span style="margin-left: 0.5em;">family</span><span style="color: #ffffff; margin-left: 1.0em;">moments</span>
-    </h1>
-
     <section class="editorial-hero">
+        
         <div class="hero-left">
-            <h2 class="sub-headline">
-                That feeling when time softens, moments linger, and your story comes alive
-            </h2>
-            <div class="text-columns">
-                <p>
-                    I'm finding inspiration in artful, stripped down, raw imagery that has feeling behind it. If I had to choose, I want honest over perfect.
-                </p>
-                <p>
-                    Where I'm able to come alongside your story, collaborate on vision and document what I observe through my own point of view.
-                </p>
+            <h1 class="split-header left-side">family</h1>
+
+            <div class="hero-left-content">
+                <h2 class="sub-headline">
+                    That feeling when time softens, moments linger, and your story comes alive
+                </h2>
+                <div class="text-columns">
+                    <p>
+                        I'm finding inspiration in artful, stripped down, raw imagery that has feeling behind it. If I had to choose, I want honest over perfect.
+                    </p>
+                    <p>
+                        Where I'm able to come alongside your story, collaborate on vision and document what I observe through my own point of view.
+                    </p>
+                </div>
             </div>
         </div>
 
-        <div class="hero-right" id="hero-container"></div>
+        <div class="hero-right">
+            <h1 class="split-header right-side">moments</h1>
+            
+            <div id="hero-img-container" style="width: 100%; height: 100%;"></div>
+        </div>
+
     </section>
 
     <section class="steps-section">
         <span class="label-text">The Experience</span>
         <div class="steps-grid">
-            <div class="step-card">
-                <h3>01. Connect</h3>
+            <div class="sub-headline">
+                <h2>01. Connect</h2>
+                <br></br>
                 <p>We start with a conversation, not a contract. Let's see if our vibes align.</p>
             </div>
-            <div class="step-card">
-                <h3>02. Create</h3>
+            <div class="sub-headline">
+                <h2>02. Create</h2>
+                  <br></br>
                 <p>No stiff posing. Just you, your people, and a space to be yourselves.</p>
             </div>
-            <div class="step-card">
-                <h3>03. Keep</h3>
+            <div class="sub-headline">
+                <h2>03. Keep</h2>
+                  <br></br>
                 <p>Heirlooms delivered digitally and in print, ready to outlast us all.</p>
             </div>
         </div>
@@ -184,23 +210,22 @@
 
     <section class="gallery-section">
         <h2 style="text-align: center; margin-bottom: 60px; font-size: 1.5rem; letter-spacing: 0.2em; text-transform: uppercase;">
-            Selected Works
+            My Families
         </h2>
         <div class="gallery-grid" id="gallery-container"></div>
     </section>
 
-      <footer class="contact-footer" id="contact">
+    <footer class="contact-footer" id="contact">
         <div class="footer-col social-only">
             <span class="label-text">Connect</span>
             <a href="https://instagram.com/allofthehumans">
-            <img src="images/InstagramIcon.png" alt="Instagram">
+                <img src="images/InstagramIcon.png" alt="Instagram">
             </a>
-            
         </div>
         
         <div class="footer-col wide-centered">
             <h2 class="tight-italic-header">Have a date in mind?</h2>
-            <a href="romance-inquiry.html" class="btn-text large-link">Start the Conversation</a>
+            <a href="family-inquiry.html" class="btn-text large-link">Start the Conversation</a>
         </div>
     </footer>
 
@@ -215,18 +240,18 @@
             folderName: 'family',
             filePrefix: 'family',
             imageCount: 72,
-            heroImage: 14 // Update this number to change hero image
+            heroImage: 14 
         };
 
         // --- DYNAMIC LOADER ---
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Load Hero Image
-            const heroContainer = document.getElementById('hero-container');
+            // 1. Load Hero Image into the specific container (not wiping out the header)
+            const heroContainer = document.getElementById('hero-img-container');
             const heroNum = galleryConfig.heroImage < 10 ? '0' + galleryConfig.heroImage : galleryConfig.heroImage;
             const heroFileName = `${galleryConfig.filePrefix}-${heroNum}.jpg`;
             
             heroContainer.innerHTML = `
-                <img src="images/${galleryConfig.folderName}/${heroFileName}" class="hero-img" alt="Family documentary photography">
+                <img src="images/${galleryConfig.folderName}/${heroFileName}" style="width:100%; height:100%; object-fit:cover;" alt="Family documentary photography">
             `;
 
             // 2. Load Gallery
