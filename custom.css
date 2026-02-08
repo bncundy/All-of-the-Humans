@@ -161,7 +161,12 @@ nav {
     width: 100%;
     overflow: hidden; 
 }
-
+/* Homepage Hero Text Visibility - Black Underglow */
+.content h2, 
+.content .subtitle {
+    /* Creates a strong, soft black glow behind the text */
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.6);
+}
 .hero-link {
     position: relative;
     text-decoration: none;
@@ -235,8 +240,21 @@ nav {
     justify-content: flex-end; 
     padding-bottom: -50px;
 }
-/* Shift branding image focus */
-.product-section .img-wrapper img { object-position: center 20%; }
+/* horizontal=center, vertical=20% from the top */
+/* Branding Section: Zoom Out & Position Fix */
+.product-section .img-wrapper img {
+    /* 1. "Zoom Out": Reset height to 100% (removes the parallax zoom) */
+    height: 100%; 
+    width: 100%;
+    
+    /* 2. Keep formatting */
+    object-fit: cover;
+    
+    /* 3. Your Position Preference (Horizontal Vertical) */
+    /* 'center 20%' means: Center horizontally, show the slice 20% from the top */
+    object-position: center 20%; 
+}
+}
 
 
 /* Home Hover Effects */
@@ -326,6 +344,26 @@ nav {
 }
 .gallery-item:hover img { transform: scale(1.02); }
 @keyframes fadeIn { to { opacity: 1; } }
+
+/* --- MANUAL GALLERY GRID (For Exact Control) --- */
+.manual-gallery-grid {
+    display: flex;
+    gap: 20px; /* Space between columns */
+    padding-top: 60px;
+}
+
+.gallery-column {
+    flex: 1; /* Each column takes up equal width (33%) */
+    display: flex;
+    flex-direction: column; /* Images stack vertically inside */
+    gap: 20px; /* Space between images vertically */
+}
+
+/* Mobile: Stack them into one long column */
+@media (max-width: 900px) {
+    .manual-gallery-grid { flex-direction: column; }
+}
+
 
 /* Lightbox */
 .lightbox {
