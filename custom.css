@@ -61,7 +61,7 @@
   --z-lightbox: 9999;
 }
 
-/* --- RESET --- */
+/* --- RESET & BASICS --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -87,18 +87,12 @@ h1 { font-size: var(--text-4xl); }
 h2 { font-size: var(--text-3xl); }
 h3 { font-size: var(--text-2xl); }
 
-/* Global Paragraph Spacing */
-p { 
-    line-height: 1.6; 
-    margin-bottom: 25px; 
-}
+p { line-height: 1.6; margin-bottom: 25px; }
 
-/* NEW: Specific Typography Class for Headers */
 .tight-italic-header {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
     font-style: italic;
-    /* drastically reduced spacing */
     letter-spacing: -0.04em; 
     line-height: 1;
 }
@@ -117,6 +111,23 @@ p {
   color: var(--color-medium-gray);
   display: block;
   margin-bottom: var(--space-sm);
+}
+
+/* Vertical Sidebar Label (Restored) */
+.vertical-label {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: rotate(-90deg) translateY(-50%);
+    transform-origin: left center;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-light-gray);
+    z-index: 100;
+    margin-left: 20px;
+    pointer-events: none;
 }
 
 /* --- NAVIGATION --- */
@@ -152,7 +163,16 @@ nav {
 }
 .nav-link:hover { opacity: 0.6; }
 
-/* --- HOMEPAGE HERO --- */
+/* Hamburger Menu Button (Hidden on Desktop) */
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 2000;
+    user-select: none;
+}
+
+/* --- HOMEPAGE HERO ENGINE --- */
 .hero-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -161,10 +181,7 @@ nav {
     width: 100%;
     overflow: hidden; 
 }
-/* Homepage Hero Text Visibility - Black Underglow */
-.content h2, 
-.content .subtitle {
-    /* Creates a strong, soft black glow behind the text */
+.content h2, .content .subtitle {
     text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .hero-link {
@@ -179,23 +196,17 @@ nav {
     overflow: hidden;
     cursor: pointer;
 }
-
 .img-wrapper {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     z-index: 0;
 }
-
 .img-wrapper img {
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     object-fit: cover;
     transition: opacity var(--transition-smooth), filter var(--transition-smooth), transform var(--transition-slow);
 }
-
 .content {
     position: relative;
     z-index: 10;
@@ -205,13 +216,7 @@ nav {
     text-shadow: 0 2px 15px rgba(0,0,0,0.4);
     padding: var(--space-sm);
 }
-
-/* Homepage H2s will use the utility class in HTML */
-.content h2 {
-    color: var(--color-white); 
-    font-size: var(--text-5xl);
-}
-
+.content h2 { color: var(--color-white); font-size: var(--text-5xl); }
 .subtitle {
     font-size: var(--text-xs);
     margin-top: 5px;
@@ -222,39 +227,21 @@ nav {
     color: var(--color-white);
 }
 
-/* Home Section Positions */
-.romance-section {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    border-right: 1px solid rgba(255,255,255,0.1);
-}
-.family-section {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-}
+/* Home Section Grid Placement */
+.romance-section { grid-column: 1 / 2; grid-row: 1 / 2; border-right: 1px solid rgba(255,255,255,0.1); }
+.family-section { grid-column: 2 / 3; grid-row: 1 / 2; }
 .product-section {
     grid-column: 1 / 3;
     grid-row: 2 / 3;
     border-top: 1px solid rgba(255,255,255,0.1);
-    /* Lowering the text block */
     justify-content: flex-end; 
     padding-bottom: -50px;
 }
-/* horizontal=center, vertical=20% from the top */
-/* Branding Section: Zoom Out & Position Fix */
 .product-section .img-wrapper img {
-    /* 1. "Zoom Out": Reset height to 100% (removes the parallax zoom) */
-    height: 100%; 
-    width: 100%;
-    
-    /* 2. Keep formatting */
+    height: 100%; width: 100%;
     object-fit: cover;
-    
-    /* 3. Your Position Preference (Horizontal Vertical) */
-    /* 'center 20%' means: Center horizontally, show the slice 20% from the top */
     object-position: center 20%; 
 }
-
 
 /* Home Hover Effects */
 .hero-container:hover .hero-link .img-wrapper img { opacity: 0.3; filter: grayscale(100%); }
@@ -264,8 +251,7 @@ nav {
 /* Ghost Header */
 .ghost-header {
     position: absolute;
-    top: 40px;
-    left: 0;
+    top: 40px; left: 0;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -282,8 +268,7 @@ nav {
 .ghost-left { justify-self: end; margin-right: calc(40px - 0.3em); text-align: right; }
 .ghost-right { justify-self: start; margin-left: 40px; text-align: left; }
 
-
-/* --- INNER PAGE STYLES (General) --- */
+/* --- INNER PAGE CONTAINERS --- */
 .container { max-width: 1400px; margin: 0 auto; padding: 0 var(--container-padding); }
 .section { padding: var(--space-2xl) var(--container-padding); }
 
@@ -297,7 +282,6 @@ nav {
   transition: opacity var(--transition-speed);
 }
 .btn-text:hover { opacity: 0.6; }
-/* Larger button for footer */
 .btn-text.large-link { font-size: var(--text-xl); border-width: 2px; }
 
 .btn-studio {
@@ -315,22 +299,165 @@ nav {
 }
 .btn-studio:hover { background: var(--color-black); color: var(--color-white); }
 
-/* Gallery Grid System (Cobblestone style via columns) */
-.gallery-section { 
-    background-color: transparent; 
-    padding-top: 120px; /* Buffer for 'Selected Works' */
+/* --- ROMANCE & JOURNAL ENGINE (LUXURY HERO) --- */
+.luxury-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    height: auto;                   
+    min-height: 100vh;              
+    width: 100%;
+    overflow: visible;              
+    align-items: stretch;           
 }
-.gallery-grid { 
-    column-count: 3; 
-    column-gap: var(--space-sm); 
+.hero-col-left {
+    display: flex;
+    flex-direction: column;
+    border-right: var(--border-width) solid var(--color-border);
 }
+.hero-statement {
+    padding: 180px var(--container-padding) 200px; 
+    background-color: var(--color-paper);
+}
+.hero-statement h1 { margin-bottom: 55px; }
+
+/* Square Image Slot - Panoramic Crop */
+.img-slot-square {
+    width: 100%;
+    height: 350px; 
+    border-top: var(--border-width) solid var(--color-border);
+    overflow: hidden;
+    position: relative;
+}
+.img-slot-square .fit-img {
+    width: 100%; height: 100%;
+    object-fit: cover; 
+    object-position: center bottom; 
+}
+
+/* RIGHT COLUMN */
+.hero-col-right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.hero-img-vertical-wrapper { width: 100%; height: auto; }
+.hero-filler-right {
+    flex: 1; 
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--color-paper);
+    border-top: var(--border-width) solid var(--color-border);
+    min-height: 200px; 
+}
+/* SHARED IMAGE STYLES */
+.fit-img { width: 100%; height: auto; display: block; object-fit: contain; }
+
+/* --- SERVICE ROW STYLING --- */
+.services-container { border-top: var(--border-width) solid var(--color-border); }
+.service-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+    border-bottom: var(--border-width) solid var(--color-border);
+}
+.service-info {
+    padding: var(--space-xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.service-info.left { border-right: var(--border-width) solid var(--color-border); }
+.service-img-block { height: 100%; width: 100%; overflow: hidden; }
+.service-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.95);
+    transition: transform var(--transition-slow);
+}
+.service-img:hover { transform: scale(1.02); }
+.service-number {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+    display: block;
+    color: var(--color-light-gray);
+}
+.service-info h2 { margin-bottom: var(--space-md); }
+.service-info p {
+    margin-top: var(--space-sm);
+    color: var(--color-medium-gray);
+    font-size: var(--text-base);
+}
+.service-features {
+    margin-top: var(--space-sm);
+    list-style: none;
+    font-size: var(--text-base);
+    color: var(--color-medium-gray);
+    line-height: 2;
+}
+.service-features li::before { content: "+ "; margin-right: 5px; }
+
+/* --- PHILOSOPHY SECTION --- */
+.philosophy-section {
+    width: 100%;
+    padding: 40px 0; 
+    background-color: var(--color-paper);
+    text-align: center;
+    border-bottom: var(--border-width) solid var(--color-border);
+}
+.philosophy-section div { width: 90%; max-width: 1400px; margin: 0 auto; padding: 0; }
+.philosophy-section h2 { font-size: 2rem; line-height: 1.3; margin-bottom: 20px; margin-top: 0; }
+
+/* --- JOURNAL & INSIGHT ENGINE --- */
+.wide-banner-section {
+    padding: var(--space-xl) var(--container-padding);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.rectangle-img {
+    width: 100%; height: auto;
+    object-fit: cover;
+    display: block;
+    filter: sepia(10%);
+}
+.insight-section {
+    padding: var(--space-2xl) var(--container-padding);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    margin-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-lg);
+}
+.styled-list {
+    list-style: none;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    letter-spacing: 0.05em;
+    line-height: 2.2;
+    color: var(--color-dark-gray);
+}
+.styled-list li::before { content: "— "; color: var(--color-light-gray); }
+
+/* --- GALLERY GRID SYSTEM --- */
+.gallery-section { background-color: transparent; padding-top: 120px; }
+.gallery-grid { column-count: 3; column-gap: var(--space-sm); }
 .gallery-item { 
     break-inside: avoid; 
     margin-bottom: var(--space-sm); 
     position: relative; 
     overflow: hidden; 
     cursor: pointer; 
-    /* Ensures items don't get cut off incorrectly in column layout */
     display: inline-block; 
     width: 100%;
 }
@@ -344,25 +471,9 @@ nav {
 .gallery-item:hover img { transform: scale(1.02); }
 @keyframes fadeIn { to { opacity: 1; } }
 
-/* --- MANUAL GALLERY GRID (For Exact Control) --- */
-.manual-gallery-grid {
-    display: flex;
-    gap: 20px; /* Space between columns */
-    padding-top: 60px;
-}
-
-.gallery-column {
-    flex: 1; /* Each column takes up equal width (33%) */
-    display: flex;
-    flex-direction: column; /* Images stack vertically inside */
-    gap: 20px; /* Space between images vertically */
-}
-
-/* Mobile: Stack them into one long column */
-@media (max-width: 900px) {
-    .manual-gallery-grid { flex-direction: column; }
-}
-
+/* Manual Gallery Grid (Branding Page) */
+.manual-gallery-grid { display: flex; gap: 20px; padding-top: 60px; }
+.gallery-column { flex: 1; display: flex; flex-direction: column; gap: 20px; }
 
 /* Lightbox */
 .lightbox {
@@ -378,8 +489,7 @@ nav {
   backdrop-filter: blur(5px);
 }
 .lightbox img {
-  max-width: 90%;
-  max-height: 90vh;
+  max-width: 90%; max-height: 90vh;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   border: 1px solid var(--color-white);
 }
@@ -392,35 +502,29 @@ nav {
   font-family: var(--font-sans);
 }
 
-/* --- FOOTER (FIXED) --- */
+/* --- FOOTER --- */
 footer, .contact-footer {
     padding: 100;
     border-top: var(--border-width) solid var(--color-border-light);
     margin-top: 0;
 }
-
 .contact-footer { 
     display: grid; 
-    /* Strictly enforce the 35% / 65% split */
     grid-template-columns: 35% 65%; 
     min-height: 250px;
     width: 100%;
-    overflow: hidden; /* Stops giant images from breaking the layout */
+    overflow: hidden; 
 }
-
-/* LEFT COLUMN (Social) */
 .footer-col.social-only {
     padding: var(--space-xl);
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically center */
-    align-items: center; /* Align left */
+    justify-content: center; 
+    align-items: center; 
     border-right: var(--border-width) solid var(--color-border-light);
 }
-
-/* THE ICON FIX - Forces the image to be small */
 .footer-col.social-only img {
-    width: 80px !important;  /* Forces size */
+    width: 80px !important;  
     height: auto !important;
     display: block;
     margin-top: 15px;
@@ -428,8 +532,6 @@ footer, .contact-footer {
     transition: opacity 0.3s;
 }
 .footer-col.social-only img:hover { opacity: 1; }
-
-/* RIGHT COLUMN (Inquire) */
 .footer-col.wide-centered {
     padding: var(--space-lg);
     display: flex;
@@ -438,8 +540,6 @@ footer, .contact-footer {
     align-items: center;
     text-align: center;
 }
-
-/* Footer Link Styling */
 .footer-link { 
     color: var(--color-medium-gray); 
     text-decoration: none; 
@@ -447,388 +547,73 @@ footer, .contact-footer {
     margin-top: 10px;
 }
 
-/* Mobile Footer Reset */
+/* --- RESPONSIVE / MOBILE GLOBAL STYLES --- */
 @media (max-width: 900px) {
+    /* 1. Spacing Overrides (Fixing "Scroll of Death") */
+    :root {
+        --space-xl: 50px;
+        --space-2xl: 60px;
+        --space-3xl: 80px;
+        --container-padding: 20px;
+    }
+
+    /* 2. Mobile Navigation */
+    .mobile-menu-btn { display: block; }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hidden off-screen */
+        width: 100%;
+        height: 100vh;
+        background: var(--color-paper);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: right 0.4s ease;
+        z-index: 1500;
+    }
+    .nav-links.mobile-open { right: 0; /* Slide in */ }
+    .nav-link { font-size: 1.5rem; }
+
+    /* 3. Hero & Layout Adjustments */
+    .hero-container { display: flex; flex-direction: column; height: auto; }
+    .romance-section, .family-section, .product-section { height: 50vh; width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    
+    .ghost-header { grid-template-columns: 1fr; grid-template-rows: auto auto; top: 20px; opacity: 0.8; gap: 5px; }
+    .ghost-left, .ghost-right { justify-self: center; margin: 0; text-align: center; }
+    
+    .nav-links { gap: 15px; }
+    .gallery-grid { column-count: 1; }
+    .manual-gallery-grid { flex-direction: column; }
+    
+    /* Romance/Journal/Services Mobile Restores */
+    .luxury-hero { grid-template-columns: 1fr; height: auto; }
+    .hero-col-left { border-right: none; }
+    .hero-statement { padding: 120px var(--container-padding) var(--space-lg); }
+    
+    .service-row { grid-template-columns: 1fr; }
+    .service-info.left { border-right: none; }
+    .service-info { padding: var(--space-lg) 30px; }
+    .service-img-block { height: 300px; }
+    .insight-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+
     .contact-footer { grid-template-columns: 1fr; }
     .footer-col.social-only { 
         border-right: none; 
         border-bottom: var(--border-width) solid var(--color-border);
-        align-items: center; /* Center align on mobile */
+        align-items: center; 
     }
+    .footer-col.wide-centered { border-left: none; border-top: var(--border-width) solid var(--color-border); }
+
+    /* 4. CRM Embed Fixes */
+    .crm-embed-wrapper { min-height: 800px; }
 }
 
-/* --- FAMILY PAGE SPECIFIC STYLES --- */
-.vertical-label {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    transform: rotate(-90deg) translateY(-50%);
-    transform-origin: left center;
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--color-light-gray);
-    z-index: 100;
-    margin-left: 20px;
-    pointer-events: none;
-}
-
-.editorial-hero {
-    display: grid;
-    grid-template-columns: 35% 65%;
-    min-height: 100vh;
-    position: relative;
-    padding-top: var(--space-3xl);
-}
-
-/* Updated Split Header Logic */
-.split-header {
-    font-family: var(--font-serif-alt);
-    font-size: var(--text-hero);
-    line-height: 0.8; /* Tighter line height prevents vertical gaps */
-    position: absolute;
-    top: 125px; /* Fixed height for alignment */
-    width: 100%;
-    z-index: 20;
-    pointer-events: none;
-    margin: 0;
-}
-
-/* LEFT SIDE ("Family") */
-.split-header.left-side {
-    text-align: right;
-    right: 0;   /* Anchors to the right edge of the left column */
-    color: var(--color-black);
-    padding-right: 0;
-    /* Optical Adjustment: Nudges text slightly over the gap to "kiss" the other side */
-    transform: translateX(1.5vw); 
-    z-index: 25; /* Sits on top */
-}
-
-/* RIGHT SIDE ("Moments") */
-.split-header.right-side {
-    text-align: left;
-    left: 0;    /* Anchors to the left edge of the right column */
-    color: var(--color-white); /* Contrast color */
-    padding-left: 0;
-    /* Optical Adjustment: Pulls text slightly back to close the gap */
-    transform: translateX(-1.5vw); 
-}
-
-/* Update hero-left to remove padding */
-.hero-left {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    position: relative;
-}
-
-/* Wrapper for content text */
-.hero-left-content {
-    padding: var(--space-md) var(--space-lg);
-    padding-right: 0; 
-    margin-top: 200px; 
-}
-
-.sub-headline {
-    font-size: var(--text-xl);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-xl);
-    max-width: 80%;
-    line-height: 1.2;
-    font-family: var(--font-sans);
-}
-
-.text-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-md);
-    font-size: var(--text-base);
-    color: var(--color-dark-gray);
-}
-
-.hero-right {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-}
-.hero-right .hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-
-/* --- ROMANCE & JOURNAL HERO (NATURAL FLOW) --- */
-.luxury-hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    height: auto;                   
-    min-height: 100vh;              
-    width: 100%;
-    overflow: visible;              
-    align-items: stretch;           
-}
-
-/* LEFT COLUMN */
-.hero-col-left {
-    display: flex;
-    flex-direction: column;
-    border-right: var(--border-width) solid var(--color-border);
-}
-
-.hero-statement {
-    /* Increased bottom padding for spacing before paragraph starts */
-    padding: 180px var(--container-padding) 200px; 
-    background-color: var(--color-paper);
-}
-/* Add space specifically below the H1 in the hero */
-.hero-statement h1 {
-    margin-bottom: 55px;
-}
-
-
-/* UPDATED: Left Square Image Slot - Panoramic Crop */
-.img-slot-square {
-    width: 100%;
-    /* Fixed height to create the panoramic shape */
-    height: 350px; 
-    border-top: var(--border-width) solid var(--color-border);
-    overflow: hidden;
-    position: relative;
-}
-/* Specific override for this image to ensure cropping */
-.img-slot-square .fit-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Force it to fill the 350px height */
-    /* Focuses on the bottom, cropping the top 25% off */
-    object-position: center bottom; 
-}
-
-/* UPDATED: second for About page */
-.img-slot-square2 {
-    width: 300px;
-    /* Fixed height to create the panoramic shape */
-    height: 300px; 
-    border-top: var(--border-width) solid var(--color-border);
-    overflow: hidden;
-    position: relative;
-    left: 40px; 
-}
-
-/* RIGHT COLUMN */
-.hero-col-right {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.hero-img-vertical-wrapper {
-    width: 100%;
-    height: auto; /* Show the full vertical image */
-}
-
-/* THE FILLER TEXT BOX */
-.hero-filler-right {
-    flex: 1; 
-    padding: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: var(--color-paper);
-    border-top: var(--border-width) solid var(--color-border);
-    min-height: 200px; 
-}
-
-/* SHARED IMAGE STYLES (General) */
-.fit-img {
-    width: 100%;
-    height: auto;      
-    display: block;
-    object-fit: contain; 
-}
-
-/* --- SERVICE ROW STYLING --- */
-.services-container { border-top: var(--border-width) solid var(--color-border); }
-        
-.service-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 500px;
-    border-bottom: var(--border-width) solid var(--color-border);
-}
-
-.service-info {
-    padding: var(--space-xl) var(--space-lg);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.service-info.left { border-right: var(--border-width) solid var(--color-border); }
-
-.service-img-block { height: 100%; width: 100%; overflow: hidden; }
-
-.service-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.95);
-    transition: transform var(--transition-slow);
-}
-.service-img:hover { transform: scale(1.02); }
-
-.service-number {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-sm);
-    display: block;
-    color: var(--color-light-gray);
-}
-
-.service-info h2 { margin-bottom: var(--space-md); }
-
-.service-info p {
-    margin-top: var(--space-sm);
-    color: var(--color-medium-gray);
-    font-size: var(--text-base);
-}
-
-.service-features {
-    margin-top: var(--space-sm);
-    list-style: none;
-    font-size: var(--text-base);
-    color: var(--color-medium-gray);
-    line-height: 2;
-}
-.service-features li::before { content: "+ "; margin-right: 5px; }
-
-
-/* --- PHILOSOPHY SECTION (WIDE & SHORT) --- */
-.philosophy-section {
-    width: 100%;
-    padding: 40px 0; 
-    background-color: var(--color-paper);
-    text-align: center;
-    border-bottom: var(--border-width) solid var(--color-border);
-}
-
-.philosophy-section div {
-    width: 90%;
-    max-width: 1400px; 
-    margin: 0 auto;
-    padding: 0;
-}
-
-.philosophy-section h2 { 
-    font-size: 2rem; 
-    line-height: 1.3; 
-    margin-bottom: 20px; 
-    margin-top: 0;
-}
-
-
-/* --- JOURNAL SPECIFIC STYLES --- */
-.wide-banner-section {
-    padding: var(--space-xl) var(--container-padding);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.rectangle-img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-    filter: sepia(10%);
-}
-
-.insight-section {
-    padding: var(--space-2xl) var(--container-padding);
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.insight-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2xl);
-    margin-top: var(--space-lg);
-    border-top: 1px solid var(--color-border);
-    padding-top: var(--space-lg);
-}
-
-.styled-list {
-    list-style: none;
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    letter-spacing: 0.05em;
-    line-height: 2.2;
-    color: var(--color-dark-gray);
-}
-.styled-list li::before { content: "— "; color: var(--color-light-gray); }
-
-
-/* --- RESPONSIVE --- */
-@media (max-width: 900px) {
-  /* Mobile Hero */
-  .hero-container { display: flex; flex-direction: column; height: auto; }
-  .romance-section, .family-section, .product-section { height: 50vh; width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-  
-  /* Mobile Ghost Header */
-  .ghost-header { grid-template-columns: 1fr; grid-template-rows: auto auto; top: 20px; opacity: 0.8; gap: 5px; }
-  .ghost-left, .ghost-right { justify-self: center; margin: 0; text-align: center; }
-  
-  /* Mobile Global */
-  :root { --container-padding: 20px; }
-  .nav-links { gap: 15px; }
-  .gallery-grid { column-count: 1; }
-
-  /* Footer Mobile */
-  .contact-footer { grid-template-columns: 35% 65%; }
-  .footer-col.wide-centered { border-left: none; border-top: var(--border-width) solid var(--color-border); }
-
-  /* Family Page Mobile */
-  .editorial-hero { grid-template-columns: 1fr; grid-template-rows: auto 50vh; padding-top: var(--space-xl); }
-  
-  /* UPDATED: Split header mobile styles */
-  .split-header { font-size: 15vw; top: 80px; position: absolute; }
-  .split-header.left-side { text-align: center; right: auto; width: 100%; transform: none; }
-  .split-header.right-side { display: none; }
-
-  .hero-left { order: 2; padding: 0; }
-  .hero-left-content { padding: var(--space-md) var(--space-sm); margin-top: 0; }
-  
-  .hero-right { order: 1; height: 50vh; }
-  .text-columns { grid-template-columns: 1fr; }
-  
-  /* Romance & Journal Page Mobile */
-  .luxury-hero {
-      grid-template-columns: 1fr; 
-      height: auto;
-  }
-  .hero-col-left {
-      border-right: none;
-  }
-  .hero-statement {
-      padding: 120px var(--container-padding) var(--space-lg);
-  }
-  
-  /* Services Mobile */
-  .service-row { grid-template-columns: 1fr; }
-  .service-info.left { border-right: none; }
-  .service-info { padding: var(--space-lg) 30px; }
-  .service-img-block { height: 300px; }
-
-  /* About Mobile */
-  .insight-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+/* Force embedded forms to behave */
+.crm-embed-wrapper iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
 }
