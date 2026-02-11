@@ -15,7 +15,6 @@
         /* Editorial Hero Layout */
         .editorial-hero {
             display: grid;
-            /* 45% Left / 55% Right Split */
             grid-template-columns: 45% 55%;
             min-height: 100vh;
             position: relative;
@@ -24,7 +23,6 @@
         
         /* LEFT COLUMN STYLES */
         .hero-left {
-            /* REMOVED PADDING: Allows text to touch the right edge */
             padding: 0;
             display: flex;
             flex-direction: column;
@@ -32,11 +30,10 @@
             position: relative;
         }
 
-        /* Wrapper for the bio text so it still has padding */
         .hero-left-content {
             padding: var(--space-md) var(--space-lg);
-            padding-right: 0; /* Keep right side clear for the header alignment */
-            margin-top: 150px; /* Push content down below the big header */
+            padding-right: 0; 
+            margin-top: 150px; 
         }
         
         /* RIGHT COLUMN STYLES */
@@ -52,7 +49,7 @@
             font-size: var(--text-hero);
             line-height: 0.8; 
             position: absolute;
-            top: 15px; /* Aligns both sides vertically */
+            top: 60px; /* Aligns both sides vertically */
             width: 100%;
             z-index: 20;
             pointer-events: none;
@@ -60,27 +57,20 @@
             white-space: nowrap;
         }
 
-        /* "family" - Aligns to the Right of the Left Column */
         .split-header.left-side {
             text-align: right;
             right: 0;
             color: var(--color-black);
-            padding-right: 25px;
-            /* Optical adjustment to slightly cross the gap */
-            transform: translateX(1vw); 
+            padding-right: 20px; 
         }
 
-        /* "moments" - Aligns to the Left of the Right Column */
         .split-header.right-side {
             text-align: left;
             left: 0;
             color: var(--color-white);
-            padding-left: 15px;
-            /* Optical adjustment to slightly cross the gap */
-            transform: translateX(-1vw);
+            padding-left: 20px;
         }
         
-        /* Content Styles */
         .sub-headline {
             font-size: var(--text-xl);
             text-transform: uppercase;
@@ -131,10 +121,31 @@
         @media (max-width: 900px) {
             .editorial-hero { grid-template-columns: 1fr; grid-template-rows: auto 50vh; padding-top: var(--space-xl); }
             
-            /* Mobile Header Fix */
-            .split-header { font-size: 15vw; top: 80px; position: absolute; }
-            .split-header.left-side { text-align: center; right: auto; width: 100%; transform: none; }
-            .split-header.right-side { display: none; } /* Hide "moments" on mobile if it overlaps poorly */
+            /* MOBILE HEADER FIX: Stack them vertically */
+            .split-header { 
+                font-size: 15vw; 
+                position: relative; 
+                top: auto; 
+                width: 100%;
+                text-align: center !important;
+                margin-bottom: -20px;
+                white-space: normal;
+            }
+
+            .split-header.left-side { 
+                padding: 0; 
+                transform: none; 
+                right: auto;
+                margin-top: 60px; 
+            }
+            
+            .split-header.right-side { 
+                display: block; 
+                padding: 0; 
+                transform: none; 
+                left: auto;
+                color: var(--color-medium-gray); /* Darker color on mobile so it shows against cream bg */
+            }
 
             .hero-left { order: 2; padding: 0; }
             .hero-left-content { padding: var(--space-md) var(--space-sm); margin-top: 0; }
@@ -148,13 +159,12 @@
 </head>
 <body>
 
-    <div class="vertical-label">The Memories</div>
-
     <nav>
         <a href="index.html" class="nav-logo">all of the humans</a>
+        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
-            <a href="about.html" class="nav-link">About</a>
+            <a href="journal.html" class="nav-link">Journal</a>
             <a href="family-inquiry.html" class="nav-link">Inquire</a>
         </div>
     </nav>
@@ -181,7 +191,6 @@
 
         <div class="hero-right">
             <h1 class="split-header right-side">moments</h1>
-            
             <div id="hero-img-container" style="width: 100%; height: 100%;"></div>
         </div>
 
@@ -190,19 +199,16 @@
     <section class="steps-section">
         <span class="label-text">The Experience</span>
         <div class="steps-grid">
-            <div class="sub-headline">
-                <h2>01. Connect</h2>
-                <br></br>
+            <div class="step-card">
+                <h3>01. Connect</h3>
                 <p>We start with a conversation, not a contract. Let's see if our vibes align.</p>
             </div>
-            <div class="sub-headline">
-                <h2>02. Create</h2>
-                  <br></br>
+            <div class="step-card">
+                <h3>02. Create</h3>
                 <p>No stiff posing. Just you, your people, and a space to be yourselves.</p>
             </div>
-            <div class="sub-headline">
-                <h2>03. Keep</h2>
-                  <br></br>
+            <div class="step-card">
+                <h3>03. Keep</h3>
                 <p>Heirlooms delivered digitally and in print, ready to outlast us all.</p>
             </div>
         </div>
@@ -210,7 +216,7 @@
 
     <section class="gallery-section">
         <h2 style="text-align: center; margin-bottom: 60px; font-size: 1.5rem; letter-spacing: 0.2em; text-transform: uppercase;">
-            My Families
+            Selected Works
         </h2>
         <div class="gallery-grid" id="gallery-container"></div>
     </section>
@@ -234,6 +240,8 @@
         <img id="lightbox-img" src="">
     </div>
 
+    <script src="custom.js"></script>
+
     <script>
         // --- CONFIGURATION FOR FAMILY PAGE ---
         const galleryConfig = {
@@ -245,7 +253,7 @@
 
         // --- DYNAMIC LOADER ---
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Load Hero Image into the specific container (not wiping out the header)
+            // 1. Load Hero Image
             const heroContainer = document.getElementById('hero-img-container');
             const heroNum = galleryConfig.heroImage < 10 ? '0' + galleryConfig.heroImage : galleryConfig.heroImage;
             const heroFileName = `${galleryConfig.filePrefix}-${heroNum}.jpg`;

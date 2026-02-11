@@ -3,53 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start Your Story | Family & Legacy</title>
+    <meta name="description" content="Book your documentary family session. Let's capture the unscripted legacy of your chaotic, beautiful life.">
+    <title>Family Inquiry | All of the Humans</title>
+    
     <link rel="stylesheet" href="custom.css">
+    
     <style>
-        body { background-color: var(--color-cream); }
-        
-        .split-layout {
+        /* INQUIRY SPECIFIC LAYOUT */
+        .inquiry-split {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 40% 60%;
             min-height: 100vh;
-            padding-top: 80px; /* Nav spacing */
         }
 
-        .left-panel {
-            padding: var(--space-2xl);
+        .inquiry-left {
+            background-color: var(--color-paper);
+            padding: 120px var(--space-lg) var(--space-lg);
             display: flex;
             flex-direction: column;
             justify-content: center;
+            border-right: var(--border-width) solid var(--color-border);
         }
 
-        .right-panel {
-            padding: var(--space-2xl);
+        .inquiry-right {
+            padding: 120px var(--space-lg) var(--space-lg);
+            background-color: var(--color-white);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
         }
 
-        .big-statement {
-            font-family: var(--font-serif-alt);
-            font-size: var(--text-5xl);
-            line-height: 1.1;
-            margin-bottom: var(--space-lg);
+        .crm-embed-wrapper {
+            width: 100%;
+            max-width: 700px;
+            min-height: 500px; 
         }
-
-        .process-list {
-            list-style: none;
-            font-family: var(--font-sans);
-            font-size: var(--text-sm);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--color-dark-gray);
-        }
-        .process-list li { margin-bottom: 10px; }
-
-        /* Responsive */
+        
         @media (max-width: 900px) {
-            .split-layout { grid-template-columns: 1fr; }
-            .left-panel { padding-bottom: 0; }
+            .inquiry-split { grid-template-columns: 1fr; }
+            .inquiry-left { padding: 100px 30px 60px; border-right: none; border-bottom: var(--border-width) solid var(--color-border); }
+            .inquiry-right { padding: 60px 20px; }
         }
     </style>
 </head>
@@ -58,27 +51,39 @@
     <nav>
         <a href="index.html" class="nav-logo">all of the humans</a>
         <div class="nav-links">
-            <a href="family.html" class="nav-link">Back to Family</a>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="journal.html" class="nav-link">Journal</a>
+            <a href="branding-inquiry.html" class="nav-link">Branding</a>
         </div>
     </nav>
 
-    <div class="split-layout">
-        <div class="left-panel">
-            <h1 class="big-statement">Let's make<br>something<br>real.</h1>
-            <ul class="process-list">
-                <li>01. Tell me about your humans</li>
-                <li>02. Pick a date</li>
-                <li>03. Make memories</li>
-            </ul>
-        </div>
-
-        <div class="right-panel">
-            <div style="width: 100%; max-width: 500px;">
-                <p style="text-align: center; color: #999; border: 2px dashed #ccc; padding: 40px;">
-                    [ VSCO FAMILY FORM HERE ]
-                </p>
+    <div class="inquiry-split">
+        
+        <div class="inquiry-left">
+            <span class="label-text">The Legacy</span>
+            <h1 class="tight-italic-header" style="font-size: 3rem; margin-bottom: 30px;">
+                Your life, exactly<br>as it is.
+            </h1>
+            <p style="font-size: 1rem; color: var(--color-medium-gray); max-width: 400px;">
+                No matching outfits required. Just you, your people, and the honest texture of your days.
+            </p>
+            <p style="font-size: 0.9rem; margin-top: 20px; line-height: 1.8;">
+                Tell me a little about your family dynamic. Are you loud and chaotic? Quiet and cuddly? 
+                I want to know the real stuff before we even pick up a camera.
+            </p>
+            
+            <div style="margin-top: 50px;">
+                <span class="label-text">Direct Contact</span>
+                <a href="mailto:hello@allofthehumans.com" class="btn-text">hello@allofthehumans.com</a>
             </div>
         </div>
+
+        <div class="inquiry-right">
+            <div class="crm-embed-wrapper">
+                
+                </div>
+        </div>
+
     </div>
 
 </body>

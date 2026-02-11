@@ -3,39 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inquire | The Wedding Collective</title>
+    <meta name="description" content="Inquire with All of the Humans for your wedding photography. Tell us about your story and celebration.">
+    <title>Begin the Conversation | All of the Humans</title>
+    
     <link rel="stylesheet" href="custom.css">
+    
     <style>
-        body { background-color: var(--color-paper); }
-        
-        .inquiry-container {
+        /* INQUIRY SPECIFIC LAYOUT */
+        .inquiry-split {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            min-height: 100vh;
+        }
+
+        /* Left Side: The "Vibe" / Instructions */
+        .inquiry-left {
+            background-color: var(--color-paper);
+            padding: 120px var(--space-lg) var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--border-width) solid var(--color-border);
+        }
+
+        /* Right Side: The Embed Container */
+        .inquiry-right {
+            padding: 120px var(--space-lg) var(--space-lg);
+            background-color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* The Box for your Tave Code */
+        .crm-embed-wrapper {
+            width: 100%;
             max-width: 700px;
-            margin: 140px auto var(--space-3xl);
-            padding: 0 var(--container-padding);
+            min-height: 500px; 
         }
-
-        .inquiry-header {
-            text-align: center;
-            margin-bottom: var(--space-2xl);
-        }
-
-        .inquiry-header h1 {
-            font-size: var(--text-4xl);
-            margin-bottom: var(--space-sm);
-        }
-
-        .inquiry-header p {
-            font-family: var(--font-serif);
-            font-style: italic;
-            color: var(--color-medium-gray);
-            font-size: var(--text-lg);
-        }
-
-        /* This box holds the VSCO Form */
-        .form-wrapper {
-            background: #fff; /* Optional: white backing for the form */
-            padding: var(--space-xl); 
-            border: 1px solid var(--color-border);
+        
+        /* Mobile adjustments */
+        @media (max-width: 900px) {
+            .inquiry-split { grid-template-columns: 1fr; }
+            .inquiry-left { padding: 100px 30px 60px; border-right: none; border-bottom: var(--border-width) solid var(--color-border); }
+            .inquiry-right { padding: 60px 20px; }
         }
     </style>
 </head>
@@ -44,21 +55,37 @@
     <nav>
         <a href="index.html" class="nav-logo">all of the humans</a>
         <div class="nav-links">
-            <a href="romance.html" class="nav-link">Back to Romance</a>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="journal.html" class="nav-link">Journal</a>
+            <a href="family-inquiry.html" class="nav-link">Inquire</a>
         </div>
     </nav>
 
-    <div class="inquiry-container">
-        <div class="inquiry-header">
-            <span class="label-text">Availability & Rates</span>
-            <h1>Begin the Conversation</h1>
-            <p>"Let's create something timeless."</p>
+    <div class="inquiry-split">
+        
+        <div class="inquiry-left">
+            <span class="label-text">The First Step</span>
+            <h1 class="tight-italic-header" style="font-size: 3rem; margin-bottom: 30px;">
+                Let's start with<br>a conversation.
+            </h1>
+            <p style="font-size: 1rem; color: var(--color-medium-gray); max-width: 400px;">
+                "To be human is to exist in a state of constant, beautiful connectivity."
+            </p>
+            <p style="font-size: 0.9rem; margin-top: 20px; line-height: 1.8;">
+                Please fill out the form to the right with as much detail as you feel comfortable sharing. 
+                We read every story personally and will respond within 48 business hours.
+            </p>
+            
+            <div style="margin-top: 50px;">
+                <span class="label-text">Direct Contact</span>
+                <a href="mailto:hello@allofthehumans.com" class="btn-text">hello@allofthehumans.com</a>
+            </div>
         </div>
 
-        <div class="form-wrapper">
-            <p style="text-align: center; color: #ccc; padding: 50px;">
-                [ VSCO ROMANCE FORM WILL LOAD HERE ]
-            </p>
+        <div class="inquiry-right">
+            <div class="crm-embed-wrapper">
+                
+                </div>
         </div>
 
     </div>

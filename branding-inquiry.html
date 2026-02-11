@@ -3,70 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commercial Inquiry | The Branding</title>
+    <meta name="description" content="Request a rate card for commercial and branding photography. Elevated visuals designed to convert.">
+    <title>Branding Inquiry | All of the Humans</title>
+    
     <link rel="stylesheet" href="custom.css">
+    
     <style>
-        body { background-color: #ffffff; }
+        /* INQUIRY SPECIFIC LAYOUT */
+        .inquiry-split {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            min-height: 100vh;
+        }
 
-        .brand-header {
-            border-bottom: 4px solid black;
-            padding: 120px var(--container-padding) var(--space-lg);
+        .inquiry-left {
+            background-color: var(--color-paper);
+            padding: 120px var(--space-lg) var(--space-lg);
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--border-width) solid var(--color-border);
         }
 
-        .brand-header h1 {
-            font-family: var(--font-sans);
-            text-transform: uppercase;
-            font-size: var(--text-3xl);
-            margin: 0;
+        .inquiry-right {
+            padding: 120px var(--space-lg) var(--space-lg);
+            background-color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .status-badge {
-            background: black;
-            color: white;
-            padding: 5px 15px;
-            text-transform: uppercase;
-            font-size: 12px;
-            font-weight: bold;
+        .crm-embed-wrapper {
+            width: 100%;
+            max-width: 700px;
+            min-height: 500px; 
         }
-
-        .form-section {
-            max-width: 800px;
-            margin: var(--space-2xl) auto;
-            padding: 0 var(--container-padding);
+        
+        @media (max-width: 900px) {
+            .inquiry-split { grid-template-columns: 1fr; }
+            .inquiry-left { padding: 100px 30px 60px; border-right: none; border-bottom: var(--border-width) solid var(--color-border); }
+            .inquiry-right { padding: 60px 20px; }
         }
-
-        /* Nav Override for Branding (White bg) */
-        nav { background: rgba(255,255,255,0.95); border-bottom: 1px solid #eee; }
-        .nav-logo { font-family: var(--font-sans); text-transform: uppercase; font-size: 14px; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="nav-logo">All of the Humans / Branding</a>
+        <a href="index.html" class="nav-logo">all of the humans</a>
         <div class="nav-links">
-            <a href="branding.html" class="nav-link">Back to Branding</a>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="branding.html" class="nav-link">Portfolio</a>
+            <a href="family-inquiry.html" class="nav-link">Family</a>
         </div>
     </nav>
 
-    <header class="brand-header">
-        <div>
-            <h1>Project Inquiry</h1>
-            <p style="color: #666; margin-top: 10px;">Commercial & Product Styling</p>
-        </div>
-        <div class="status-badge">Accepting Q3 Projects</div>
-    </header>
-
-    <section class="form-section">
-        <div style="width: 100%;">
-            <p style="text-align: center; color: #ccc; border: 1px solid #eee; padding: 60px; background: #fafafa;">
-                [ VSCO BRANDING FORM EMBED CODE HERE ]
+    <div class="inquiry-split">
+        
+        <div class="inquiry-left">
+            <span class="label-text">Commercial & Editorial</span>
+            <h1 class="tight-italic-header" style="font-size: 3rem; margin-bottom: 30px;">
+                Elevated visuals<br>for modern brands.
+            </h1>
+            <p style="font-size: 1rem; color: var(--color-medium-gray); max-width: 400px;">
+                We translate physical products into digital assets. Clean, textured, and designed to convert.
             </p>
+            <p style="font-size: 0.9rem; margin-top: 20px; line-height: 1.8;">
+                Whether you need a full catalogue refresh, social-first video content, or a stylized campaign, 
+                let's define the scope. Please detail your project timeline and deliverables.
+            </p>
+            
+            <div style="margin-top: 50px;">
+                <span class="label-text">Direct Contact</span>
+                <a href="mailto:hello@allofthehumans.com" class="btn-text">hello@allofthehumans.com</a>
+            </div>
         </div>
-    </section>
+
+        <div class="inquiry-right">
+            <div class="crm-embed-wrapper">
+                
+                </div>
+        </div>
+
+    </div>
 
 </body>
 </html>
