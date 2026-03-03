@@ -1,3 +1,258 @@
-<title>Couples & Lovers | All of the Humans: Emotive Portraiture</title>
-<meta name="description" content="Artful, stripped-down imagery of your unique connectivity. Couples photography that values presence over performance. Serving the UK and Dallas, TX.">
-<link rel="canonical" href="https://allofthehumans.netlify.app/couples" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couples & Lovers | All of the Humans: Emotive Portraiture</title>
+    <meta name="description" content="Artful, stripped-down imagery of your unique connectivity. Couples photography that values presence over performance across the UK and Worldwide.">
+    <link rel="canonical" href="https://allofthehumans.netlify.app/couples" />
+    <link rel="stylesheet" href="custom.css">
+
+    <style>
+        .media-scroller-section {
+            padding: 80px 0 100px;
+            background-color: transparent;
+        }
+        
+        .media-scroller-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 var(--container-padding);
+        }
+
+        .media-scroller {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
+            scroll-snap-type: inline mandatory;
+            padding: 0 var(--container-padding) 40px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .media-scroller::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scroller-item {
+            flex: 0 0 auto;
+            height: 70vh;
+            max-height: 800px;
+            min-height: 450px;
+            scroll-snap-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .scroller-item img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.5s ease;
+        }
+
+        .scroller-item:hover img {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 900px) {
+            .media-scroller-section { padding: 60px 0; }
+            .scroller-item { height: 55vh; }
+            .media-scroller { padding: 0 20px 40px; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">all of the humans</a>
+        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="Couples.html" class="nav-link" style="opacity: 1; font-weight: 400;">Couples</a>
+            <a href="Engagement.html" class="nav-link">Engagement</a>
+            <a href="romance-inquiry.html" class="nav-link">Inquire</a>
+        </div>
+    </nav>
+
+    <header class="luxury-hero">
+        <div class="hero-col-left">
+            <div class="hero-statement">
+                <span class="label-text">Couples & Lovers</span>
+                <h1 class="tight-italic-header">The art of<br>being together.</h1>
+                <p>
+                    No wedding dress required. This is about documenting the stripped-down, honest connection between two people exactly as you are right now. We value presence over performance, seeking out the quiet magnetism that makes your dynamic entirely your own.
+                </p>
+                <p>
+                    Whether you are celebrating an anniversary, a Tuesday afternoon, or simply the fact that you found each other, these sessions are an unscripted celebration of your shared life.
+                </p>
+            </div>
+            <div id="hero-img-square" class="img-slot-square"></div>
+        </div>
+    
+        <div class="hero-col-right">
+            <div id="hero-img-vertical" class="hero-img-vertical-wrapper"></div>
+            
+            <div class="hero-filler-right">
+                <span class="serif italic" style="font-size: 1.5rem;">Unscripted</span>
+                <span class="label-text" style="margin-top: 10px;">Emotive Portraiture</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="philosophy-section">
+        <span class="label-text">The Approach</span>
+        <div>
+            <h2 class="tight-italic-header">"Real love is rarely perfectly posed. It lives in the messy kitchens, the tangled hands on a windy walk, and the comfortable silence you share when no one else is watching."</h2>
+        </div>
+    </section>
+
+    <section class="services-container">
+        <div class="service-row">
+            <div class="service-info left">
+                <div>
+                    <span class="service-number">(no. 01)</span>
+                    <h2 class="tight-italic-header">The In-Home Session</h2>
+                    <p>
+                        Documentary photography in the space you've built together. Coffee on the sofa, making breakfast, and the quiet comfort of your own walls. We let your natural routine dictate the flow of the session.
+                    </p>
+                    <ul class="service-features">
+                        <li>Up to 2 Hours Coverage</li>
+                        <li>Shot in the comfort of your home</li>
+                        <li>Intimate, documentary approach</li>
+                        <li>Private Online Gallery with 100+ Edited Images</li>
+                        <li>Print Release Rights</li>
+                    </ul>
+                    <span class="service-number" style="margin-top: 20px;">(£650)</span>
+                </div>
+                <a href="romance-inquiry.html" class="btn-text">Book Your Session</a>
+            </div>
+            <div class="service-img-block" id="service-img-1"></div>
+        </div>
+
+        <div class="service-row">
+            <div class="service-img-block" id="service-img-2"></div>
+            <div class="service-info">
+                <div>
+                    <span class="service-number">(no. 02)</span>
+                    <h2 class="tight-italic-header">The Location Session</h2>
+                    <p>
+                        A collaborative wander through the Cotswolds, the city streets, or wherever you feel most alive. No stiff poses, just directed movement, genuine interaction, and an editorial eye for the environment.
+                    </p>
+                    <ul class="service-features">
+                        <li>Up to 2.5 Hours Coverage</li>
+                        <li>Location scouting & styling guidance</li>
+                        <li>1-2 Outfit Changes</li>
+                        <li>Private Online Gallery with 120+ Edited Images</li>
+                        <li>Travel within 30 miles included</li>
+                    </ul>
+                    <span class="service-number" style="margin-top: 20px;">(£750)</span>
+                </div>
+                <a href="romance-inquiry.html" class="btn-text">Book Your Session</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="media-scroller-section">
+        <div class="media-scroller-header">
+            <h2 class="tight-italic-header" style="font-size: 2.5rem; margin-bottom: 10px;">The Archive</h2>
+            <p style="color: var(--color-medium-gray); font-size: 0.9rem;">Scroll horizontally to explore.</p>
+        </div>
+        <div class="media-scroller" id="gallery-container"></div>
+    </section>
+    
+    <footer class="contact-footer" id="contact">
+        <div class="footer-col social-only">
+            <span class="label-text">Connect</span>
+            <a href="https://instagram.com/allofthehumans">
+            <img src="images/InstagramIcon.png" alt="Instagram">
+            </a>
+        </div>
+        
+        <div class="footer-col wide-centered">
+            <h2 class="tight-italic-header">Ready to document your connection?</h2>
+            <a href="romance-inquiry.html" class="btn-text large-link">Start the Conversation</a>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script src="custom.js"></script>
+    <script>
+        // CONFIGURATION FOR COUPLES PAGE
+        const galleryConfig = {
+            folderName: 'couples',     // Target your /images/couples/ folder
+            filePrefix: 'couples',     // Expects images named couples-01.jpg, couples-02.jpg, etc.
+            imageCount: 15,            // Set this to how many photos are in your scroller folder
+            heroImages: [1, 2],        // images for the top split hero [square, vertical]
+            serviceImages: [3, 4]      // images for the two product options
+        };
+
+        // Fisher-Yates Shuffle Algorithm
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Load Hero Images
+            const leftContainer = document.getElementById('hero-img-square');
+            const num1 = galleryConfig.heroImages[0] < 10 ? '0' + galleryConfig.heroImages[0] : galleryConfig.heroImages[0];
+            leftContainer.innerHTML = `<img src="images/${galleryConfig.folderName}/${galleryConfig.filePrefix}-${num1}.jpg" class="fit-img" alt="Couples Detail">`;
+
+            const rightContainer = document.getElementById('hero-img-vertical');
+            const num2 = galleryConfig.heroImages[1] < 10 ? '0' + galleryConfig.heroImages[1] : galleryConfig.heroImages[1];
+            rightContainer.innerHTML = `<img src="images/${galleryConfig.folderName}/${galleryConfig.filePrefix}-${num2}.jpg" class="fit-img" alt="Couples Portrait">`;
+
+            // 2. Load Service Images
+            const serviceImg1 = document.getElementById('service-img-1');
+            const serviceImg2 = document.getElementById('service-img-2');
+            
+            if (galleryConfig.serviceImages.length >= 2) {
+                 const sNum1 = galleryConfig.serviceImages[0] < 10 ? '0' + galleryConfig.serviceImages[0] : galleryConfig.serviceImages[0];
+                 serviceImg1.innerHTML = `<img src="images/${galleryConfig.folderName}/${galleryConfig.filePrefix}-${sNum1}.jpg" class="service-img" alt="In-Home Session">`;
+
+                 const sNum2 = galleryConfig.serviceImages[1] < 10 ? '0' + galleryConfig.serviceImages[1] : galleryConfig.serviceImages[1];
+                 serviceImg2.innerHTML = `<img src="images/${galleryConfig.folderName}/${galleryConfig.filePrefix}-${sNum2}.jpg" class="service-img" alt="Location Session">`;
+            }
+
+            // 3. Load Shuffled Gallery Scroller
+            const container = document.getElementById('gallery-container');
+            let imageIndices = Array.from({length: galleryConfig.imageCount}, (_, i) => i + 1);
+            imageIndices = shuffleArray(imageIndices);
+
+            let htmlContent = '';
+            imageIndices.forEach(index => {
+                const num = index < 10 ? '0' + index : index; 
+                const fileName = `${galleryConfig.filePrefix}-${num}.jpg`;
+                htmlContent += `
+                    <div class="scroller-item" onclick="openLightbox(this)">
+                        <img src="images/${galleryConfig.folderName}/${fileName}" loading="lazy" alt="Couples Portfolio Image">
+                    </div>
+                `;
+            });
+            container.innerHTML = htmlContent;
+        });
+
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; 
+        }
+    </script>
+</body>
+</html>

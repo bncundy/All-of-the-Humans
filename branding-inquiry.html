@@ -9,22 +9,45 @@
     <link rel="stylesheet" href="custom.css">
     
     <style>
-        /* INQUIRY SPECIFIC LAYOUT */
+        /* --- BRANDING INQUIRY SPECIFIC LAYOUT (Studio Aesthetic) --- */
+        body {
+            background-color: var(--color-white); /* Crisp white instead of soft paper */
+        }
+
         .inquiry-split {
             display: grid;
             grid-template-columns: 40% 60%;
             min-height: 100vh;
         }
 
+        /* Left Side: Dark Mode Studio Vibe */
         .inquiry-left {
-            background-color: var(--color-paper);
+            background-color: var(--color-charcoal);
+            color: var(--color-white);
             padding: 120px var(--space-lg) var(--space-lg);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-right: var(--border-width) solid var(--color-border);
         }
 
+        /* Force text overrides for the dark background */
+        .inquiry-left h1 { color: var(--color-white); }
+        .inquiry-left .label-text { color: var(--color-light-gray); }
+        .inquiry-left p { color: #cccccc !important; }
+
+        /* Custom button for the dark side */
+        .btn-brand-dark {
+            color: var(--color-white);
+            font-size: var(--text-md);
+            border-bottom: var(--border-width) solid var(--color-white);
+            padding-bottom: 5px;
+            text-decoration: none;
+            transition: opacity var(--transition-speed);
+            display: inline-block;
+        }
+        .btn-brand-dark:hover { opacity: 0.6; }
+
+        /* Right Side: The Embed Container */
         .inquiry-right {
             padding: 120px var(--space-lg) var(--space-lg);
             background-color: var(--color-white);
@@ -39,9 +62,10 @@
             min-height: 500px; 
         }
         
+        /* Mobile adjustments */
         @media (max-width: 900px) {
             .inquiry-split { grid-template-columns: 1fr; }
-            .inquiry-left { padding: 100px 30px 60px; border-right: none; border-bottom: var(--border-width) solid var(--color-border); }
+            .inquiry-left { padding: 100px 30px 60px; }
             .inquiry-right { padding: 60px 20px; }
         }
     </style>
@@ -50,10 +74,11 @@
 
     <nav>
         <a href="index.html" class="nav-logo">all of the humans</a>
+        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
             <a href="branding.html" class="nav-link">Portfolio</a>
-            <a href="family-inquiry.html" class="nav-link">Family</a>
+            <a href="About.html" class="nav-link">About</a>
         </div>
     </nav>
 
@@ -64,7 +89,7 @@
             <h1 class="tight-italic-header" style="font-size: 3rem; margin-bottom: 30px;">
                 Elevated visuals<br>for modern brands.
             </h1>
-            <p style="font-size: 1rem; color: var(--color-medium-gray); max-width: 400px;">
+            <p style="font-size: 1rem; max-width: 400px;">
                 We translate physical products into digital assets. Clean, textured, and designed to convert.
             </p>
             <p style="font-size: 0.9rem; margin-top: 20px; line-height: 1.8;">
@@ -74,7 +99,7 @@
             
             <div style="margin-top: 50px;">
                 <span class="label-text">Direct Contact</span>
-                <a href="mailto:hello@allofthehumans.com" class="btn-text">hello@allofthehumans.com</a>
+                <a href="mailto:hello@allofthehumans.com" class="btn-brand-dark">hello@allofthehumans.com</a>
             </div>
         </div>
 
@@ -85,6 +110,8 @@
         </div>
 
     </div>
+
+    <script src="custom.js"></script>
 
 </body>
 </html>

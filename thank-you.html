@@ -3,48 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Thank you for inquiring with All of the Humans. We will be in touch shortly.">
+    <title>Inquiry Received | All of the Humans</title>
+    
     <meta name="robots" content="noindex">
-    <title>Message Received | All of the Humans</title>
+    
+    <meta http-equiv="refresh" content="5;url=index.html">
     
     <link rel="stylesheet" href="custom.css">
     
     <style>
-        /* PAGE SPECIFIC: Center the content for a "Card" feel */
-        .thank-you-hero {
-            min-height: 80vh;
+        /* --- POST-INQUIRY SPECIFIC LAYOUT --- */
+        .thank-you-wrapper {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: var(--space-2xl) var(--container-padding);
             background-color: var(--color-paper);
+            padding: 0 var(--container-padding);
         }
-        
+
         .thank-you-content {
-            max-width: 600px;
+            max-width: 800px;
+            /* A soft, elegant fade-in as the page loads */
+            animation: softFadeIn 1.2s ease-out forwards;
+            opacity: 0;
+            transform: translateY(15px);
         }
-        
-        /* Instagram CTA Circle */
-        .insta-circle {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 1px solid var(--color-border);
-            margin-top: 40px;
-            transition: all 0.3s ease;
+
+        .redirect-text {
+            margin-top: 50px;
+            font-size: var(--text-xs);
+            color: var(--color-light-gray);
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
         }
-        .insta-circle:hover {
-            border-color: var(--color-black);
-            transform: scale(1.05);
+
+        @keyframes softFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .insta-circle img {
-            width: 30px;
-            opacity: 0.7;
+
+        @media (max-width: 900px) {
+            .thank-you-content h1 {
+                font-size: 2.5rem !important;
+            }
         }
     </style>
 </head>
@@ -52,48 +59,48 @@
 
     <nav>
         <a href="index.html" class="nav-logo">all of the humans</a>
+        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
-            <a href="journal.html" class="nav-link">Journal</a>
-            <a href="family-inquiry.html" class="nav-link">Inquire</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="Couples.html" class="nav-link">Couples</a>
+            <a href="Engagement.html" class="nav-link">Engagement</a>
+            <a href="romance-inquiry.html" class="nav-link">Inquire</a>
         </div>
     </nav>
 
-    <section class="thank-you-hero">
+    <main class="thank-you-wrapper">
         <div class="thank-you-content">
             <span class="label-text">Message Received</span>
             
-            <h1 class="tight-italic-header" style="font-size: 3.5rem; margin-bottom: 30px;">
-                Thank you for trusting us<br>with your story.
+            <h1 class="tight-italic-header" style="font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px;">
+                Thank you for your submission —<br>AOTH will be in touch soon!
             </h1>
             
-            <p style="font-size: 1.1rem; color: var(--color-medium-gray);">
-                We have received your inquiry and will be in touch within 48 hours.
-                While you wait, we invite you to explore our latest stories or connect with us on social.
-            </p>
-
-            <a href="journal.html" class="btn-text" style="margin-right: 20px;">Read the Journal</a>
-
-            <div style="margin-top: 20px;">
-                <a href="https://instagram.com/allofthehumans" target="_blank" class="insta-circle">
-                    <img src="images/InstagramIcon.png" alt="Instagram">
-                </a>
-                <div class="label-text" style="margin-top: 15px;">Follow the Journey</div>
-            </div>
+            <p class="redirect-text">Redirecting you to the homepage in <span id="countdown">5</span>...</p>
+            
+            <a href="index.html" class="btn-text" style="margin-top: 30px; display: inline-block; font-size: var(--text-sm);">Return Home Now</a>
         </div>
-    </section>
+    </main>
 
-    <footer class="contact-footer">
-        <div class="footer-col social-only">
-            <span class="label-text">Connect</span>
-            <a href="https://instagram.com/allofthehumans">
-                <img src="images/InstagramIcon.png" alt="Instagram" style="width: 25px;">
-            </a>
-        </div>
-        <div class="footer-col wide-centered">
-            <h2 class="tight-italic-header" style="font-size: 2rem;">"To be human is to exist in a state of constant, beautiful connectivity."</h2>
-        </div>
-    </footer>
+    <script src="custom.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let timeLeft = 5;
+            const countdownEl = document.getElementById('countdown');
+            
+            const timer = setInterval(() => {
+                timeLeft--;
+                if (countdownEl) {
+                    countdownEl.textContent = timeLeft;
+                }
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                }
+            }, 1000);
+        });
+    </script>
 
 </body>
 </html>
