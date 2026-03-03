@@ -4,19 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weddings & Romance | All of the Humans: Artful Wedding Photography</title>
-<meta name="description" content="Timeless, refined wedding imagery for couples who cherish legacy and genuine connection. Documentary wedding photography across the UK and Worldwide.">
-<link rel="canonical" href="https://allofthehumans.netlify.app/romance" />
+    <meta name="description" content="Timeless, refined wedding imagery for couples who cherish legacy and genuine connection. Documentary wedding photography across the UK and Worldwide.">
+    <link rel="canonical" href="https://allofthehumans.netlify.app/romance" />
+    
     <link rel="stylesheet" href="custom.css">
+    
+    <style>
+        /* --- ROMANCE PAGE SPECIFIC OVERRIDES --- */
+        body { background-color: var(--color-paper); }
+        
+        /* The Media Scroller Section */
+        .media-scroller-section {
+            padding: var(--space-3xl) 0 var(--space-xl);
+            background-color: var(--color-paper);
+            border-top: var(--border-width) solid var(--color-border);
+        }
+        
+        .media-scroller-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+            padding: 0 var(--container-padding);
+        }
+
+        .media-scroller {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
+            /* Snapping makes it stop cleanly on images */
+            scroll-snap-type: inline mandatory;
+            padding: 0 var(--container-padding) var(--space-md);
+            
+            /* Hide scrollbars for a clean, editorial look */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        .media-scroller::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+
+        .scroller-item {
+            flex: 0 0 auto;
+            height: 70vh; /* Responsive height focused on portraits */
+            max-height: 800px;
+            min-height: 450px;
+            scroll-snap-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .scroller-item img {
+            height: 100%;
+            width: auto; /* Width adjusts automatically to maintain aspect ratio */
+            object-fit: contain;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform var(--transition-smooth);
+            background-color: var(--color-white); /* Provides a clean matte if images vary */
+        }
+
+        .scroller-item:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 900px) {
+            .media-scroller-section { padding: var(--space-xl) 0; }
+            .scroller-item { height: 55vh; }
+            .media-scroller { padding: 0 20px var(--space-md); gap: 10px; }
+        }
+    </style>
 </head>
 <body>
 
     <nav>
         <a href="index.html" class="nav-logo">all of the humans</a>
+        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
-            <a href="about.html" class="nav-link">About</a>
-            <a href="Couples.html" class="nav-link">Couples</a>
-            <a href="Engagement.html" class="nav-link">Engagement</a>
+            <a href="journal.html" class="nav-link">Journal</a>
             <a href="romance-inquiry.html" class="nav-link">Inquire</a>
         </div>
     </nav>
@@ -24,103 +90,45 @@
     <header class="luxury-hero">
         <div class="hero-col-left">
             <div class="hero-statement">
-                <span class="label-text">The Wedding Collective</span>
-                <h1 class="tight-italic-header">Thoughtfully Designed<br>Wedding Experiences.</h1>
-                <p>
-                    I specialize in creating timeless, refined imagery filled with soul. My work is designed for couples who cherish artistry, legacy, and genuine connection — those who want their story told with care, intention, and a deep respect for the moments that matter.
+                <span class="label-text">Weddings & Elopements</span>
+                <h1 class="tight-italic-header" style="font-size: 4.5rem;">The quiet<br>magnetism.</h1>
+                <p style="font-size: var(--text-lg); color: var(--color-medium-gray); max-width: 400px;">
+                    Documenting the stripped-down, honest connection between two people. Valuing presence over performance.
                 </p>
-                <p>
-                    Your photographs should feel like you—elegant but honest, refined yet full of life. My couples are drawn to imagery that feels effortless and editorial, classic with depth and warmth. If you’re looking for photographs that reflect your story with authenticity and artistry, you’re in the right place.
-                </p>
+                <a href="#portfolio" class="btn-text" style="margin-top: 20px; display: inline-block;">View the Archive</a>
             </div>
-            <div id="hero-img-square" class="img-slot-square"></div>
+            <div class="img-slot-square">
+                <img src="images/romance/romance-02.jpg" alt="Candid wedding moment" class="fit-img" loading="lazy">
+            </div>
         </div>
-    
         <div class="hero-col-right">
-            <div id="hero-img-vertical" class="hero-img-vertical-wrapper"></div>
-            
-            <div class="hero-filler-right">
-                <span class="serif italic" style="font-size: 1.5rem;">Est. 2011</span>
-                <span class="label-text" style="margin-top: 10px;">Capturing Honest Connection</span>
+            <div class="hero-img-vertical-wrapper" style="height: 100%;">
+                <img src="images/romance/romance-01.jpg" alt="Editorial wedding portrait" class="fit-img" style="height: 100%; object-fit: cover;">
             </div>
         </div>
     </header>
 
-    <section class="philosophy-section">
-        <span class="label-text">Our Philosophy</span>
-        <div>
-            <h2 class="tight-italic-header">"To be human is to exist in a state of constant, beautiful connectivity. Whether it is a grand celebration in a far-flung locale or a quiet morning in the Gloucestershire countryside, our work is a study of the in-between."</h2>
+    <section class="media-scroller-section" id="portfolio">
+        <div class="media-scroller-header">
+            <span class="label-text">Selected Works</span>
+            <h2 class="tight-italic-header" style="font-size: 2.5rem;">An Honest Record</h2>
+            <p style="color: var(--color-medium-gray); font-size: 0.9rem; margin-top: 15px;">Scroll horizontally to explore.</p>
         </div>
-        <p class="serif italic"> Sophie Cundy, founder</p>
+        
+        <div class="media-scroller" id="romance-scroller"></div>
     </section>
 
-    <section class="services-container">
-        <div class="service-row">
-            <div class="service-info left">
-                <div>
-                    <span class="service-number">(no. 01)</span>
-                    <h2 class="tight-italic-header">The Wedding Day</h2>
-                    <p>
-                        Full-day documentation for couples who value presence over performance. We move quietly, capturing the atmosphere, the textures, and the fleeting glances that define the day. Our approach is rooted in the belief that the most profound images are found, not created.
-                    </p>
-                    <ul class="service-features">
-                        <li>8-10 Hours Coverage</li>
-                        <li>2 Photographers</li>
-                        <li>Polaroids delivered evening of</li>
-                        <li>Sneak Peeks within 48 hours</li>
-                        <li>Private Online Gallery with 400+ Edited Images</li>
-                        <li>1:1 Virual Consultancy Planning</li>
-                        <li>UK Travel Included</li>
-                        <li>*Engagement Session included</li>
-                    </ul>
-                    <span class="service-number" style="margin-top: 20px;">(£3300)</span>
-                </div>
-                <a href="romance-inquiry.html" class="btn-text">Inquire Now</a>
-            </div>
-            <div class="service-img-block" id="service-img-1"></div>
-        </div>
-
-        <div class="service-row">
-            <div class="service-img-block" id="service-img-2"></div>
-            <div class="service-info">
-                <div>
-                    <span class="service-number">(no. 02)</span>
-                    <h2 class="tight-italic-header">The Intimate</h2>
-                    <p>
-                        Private celebrations for those who seek the profound in the quiet or informal. Whether a city hall ceremony, sneaky elopement or a personal vow exchange, we curate a bespoke timeline focused on connection.
-                    </p>
-                    <ul class="service-features">
-                        <li>Up to 3 Hours Coverage</li>
-                        <li>1 Photographer</li>
-                        <li>Location Scouting</li>
-                        <li>1:1 Virual Consultancy Planning</li>
-                        <li>Ideal for Desitination Weddings</li>
-                        <li>Sneak Peeks within 48 hours</li>
-                    </ul>
-                    <span class="service-number" style="margin-top: 20px;">(£1450)</span>
-                </div>
-                <a href="romance-inquiry.html" class="btn-text">Inquire Now</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="gallery-section">
-        <h2 class="tight-italic-header" style="text-align: center; margin-bottom: 60px;">My Couples</h2>
-        <div class="gallery-grid" id="gallery-container"></div>
-    </section>
-    
     <footer class="contact-footer" id="contact">
         <div class="footer-col social-only">
             <span class="label-text">Connect</span>
-            <a href="https://instagram.com/allofthehumans">
-            <img src="images/InstagramIcon.png" alt="Instagram">
+            <a href="https://instagram.com/allofthehumans" target="_blank">
+                <img src="images/InstagramIcon.png" alt="Instagram">
             </a>
-            
         </div>
         
         <div class="footer-col wide-centered">
-            <h2 class="tight-italic-header">Have a date in mind?</h2>
-            <a href="romance-inquiry.html" class="btn-text large-link">Start the Conversation</a>
+            <h2 class="tight-italic-header">Let's document your celebration.</h2>
+            <a href="romance-inquiry.html" class="btn-text large-link">Begin the Conversation</a>
         </div>
     </footer>
 
@@ -129,57 +137,56 @@
         <img id="lightbox-img" src="">
     </div>
 
+    <script src="custom.js"></script>
+
     <script>
-        const galleryConfig = {
+        // --- 1. CONFIGURATION ---
+        // Adjust the 'imageCount' to match the total number of photos in your romance folder.
+        const scrollerConfig = {
             folderName: 'romance',
             filePrefix: 'romance',
-            // UPDATED: Only 10 images
-            imageCount: 10,
-            heroImages: [1, 13], 
-            serviceImages: [3, 4]
+            imageCount: 40 // Update this number based on your actual folder contents
         };
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Load LEFT (Square/Panoramic) Image
-            const leftContainer = document.getElementById('hero-img-square');
-            const num1 = galleryConfig.heroImages[0] < 10 ? '0' + galleryConfig.heroImages[0] : galleryConfig.heroImages[0];
-            // fit-img class is used but CSS object-position: center bottom handles the crop
-            leftContainer.innerHTML = `<img src="images/${galleryConfig.folderName}/${galleryConfig.filePrefix}-${num1}.jpg" class="fit-img" alt="Wedding Detail">`;
-
-            // 2. Load RIGHT (Vertical) Image
-            const rightContainer = document.getElementById('hero-img-vertical');
-            const num2 = galleryConfig.heroImages[1] < 10 ? '0' + galleryConfig.heroImages[1] : galleryConfig.heroImages[1];
-            rightContainer.innerHTML = `<img src="images/${galleryConfig.folderName}/${galleryConfig.filePrefix}-${num2}.jpg" class="fit-img" alt="Wedding Portrait">`;
-
-            // 3. Load Service Images
-            const serviceImg1 = document.getElementById('service-img-1');
-            const serviceImg2 = document.getElementById('service-img-2');
-            
-            if (galleryConfig.serviceImages.length >= 2) {
-                 const sNum1 = galleryConfig.serviceImages[0] < 10 ? '0' + galleryConfig.serviceImages[0] : galleryConfig.serviceImages[0];
-                 const sFile1 = `${galleryConfig.filePrefix}-${sNum1}.jpg`;
-                 serviceImg1.innerHTML = `<img src="images/${galleryConfig.folderName}/${sFile1}" class="service-img" alt="Wedding Day">`;
-
-                 const sNum2 = galleryConfig.serviceImages[1] < 10 ? '0' + galleryConfig.serviceImages[1] : galleryConfig.serviceImages[1];
-                 const sFile2 = `${galleryConfig.filePrefix}-${sNum2}.jpg`;
-                 serviceImg2.innerHTML = `<img src="images/${galleryConfig.folderName}/${sFile2}" class="service-img" style="filter: grayscale(100%);" alt="Elopement">`;
+        // --- 2. ARRAY SHUFFLER (Fisher-Yates Algorithm) ---
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
             }
+            return array;
+        }
 
-            // 4. Load Gallery Grid
-            const container = document.getElementById('gallery-container');
+        // --- 3. DYNAMIC INJECTION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollerContainer = document.getElementById('romance-scroller');
+            
+            // Create an array of numbers from 1 to imageCount
+            let imageIndices = Array.from({length: scrollerConfig.imageCount}, (_, i) => i + 1);
+            
+            // Randomize the order
+            imageIndices = shuffleArray(imageIndices);
+
             let htmlContent = '';
-            for (let i = 1; i <= galleryConfig.imageCount; i++) {
-                const num = i < 10 ? '0' + i : i; 
-                const fileName = `${galleryConfig.filePrefix}-${num}.jpg`;
+            
+            // Loop through the scrambled array to build the HTML
+            imageIndices.forEach(index => {
+                const num = index < 10 ? '0' + index : index; 
+                const fileName = `${scrollerConfig.filePrefix}-${num}.jpg`;
+                
                 htmlContent += `
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="images/${galleryConfig.folderName}/${fileName}" loading="lazy" alt="Romance Portfolio ${i}">
+                    <div class="scroller-item" onclick="openLightbox(this)">
+                        <img src="images/${scrollerConfig.folderName}/${fileName}" 
+                             loading="lazy" 
+                             alt="All of the Humans: Documentary wedding photography portfolio image">
                     </div>
                 `;
-            }
-            container.innerHTML = htmlContent;
+            });
+            
+            scrollerContainer.innerHTML = htmlContent;
         });
 
+        // --- 4. LIGHTBOX OVERRIDES ---
         function openLightbox(element) {
             const imgSrc = element.querySelector('img').src;
             document.getElementById('lightbox-img').src = imgSrc;
