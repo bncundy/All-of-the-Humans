@@ -187,24 +187,18 @@
         <img id="lightbox-img" src="">
     </div>
 
-    <script>
+<script>
         const galleryConfig = {
             folderName: 'romance',
             filePrefix: 'romance',
-            // Increase this number to inject more photos into the scroller
-            imageCount: 26 ,
             heroImages: [1, 13], 
-            serviceImages: [3, 4]
+            serviceImages: [3, 4],
+            
+            // THE FIX: Type the exact order you want the photos to appear.
+            // Mix your Color and B&W numbers manually here.
+            scrollerOrder: [5, 2, 8, 1, 7, 10, 3, 24, 25, 9, 4, 6, 11, 18, 15, 21, 12, 19, 13, 23, 16, 26, 20, 17, 14, 22, 27
+            ] 
         };
-
-        // Fisher-Yates Shuffle Algorithm
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
 
         document.addEventListener('DOMContentLoaded', () => {
             // 1. Load LEFT (Square/Panoramic) Image
@@ -231,19 +225,12 @@
                  serviceImg2.innerHTML = `<img src="images/${galleryConfig.folderName}/${sFile2}" class="service-img" style="filter: grayscale(100%);" alt="Elopement">`;
             }
 
-            // 4. Load Shuffled Gallery Scroller
+            // 4. Load Curated Gallery Scroller
             const container = document.getElementById('gallery-container');
-            
-            // Generate array of image numbers [1, 2, 3... up to imageCount]
-            let imageIndices = Array.from({length: galleryConfig.imageCount}, (_, i) => i + 1);
-            
-            // Randomize the order
-            imageIndices = shuffleArray(imageIndices);
-
             let htmlContent = '';
             
-            // Loop through the scrambled array to build the HTML
-            imageIndices.forEach(index => {
+            // Loop through your exact scrollerOrder array
+            galleryConfig.scrollerOrder.forEach(index => {
                 const num = index < 10 ? '0' + index : index; 
                 const fileName = `${galleryConfig.filePrefix}-${num}.jpg`;
                 
@@ -257,6 +244,7 @@
             container.innerHTML = htmlContent;
         });
 
+        // Lightbox functions remain the same
         function openLightbox(element) {
             const imgSrc = element.querySelector('img').src;
             document.getElementById('lightbox-img').src = imgSrc;
