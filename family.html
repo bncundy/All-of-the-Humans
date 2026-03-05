@@ -21,19 +21,25 @@
             padding-top: var(--space-3xl);
         }
         
-        /* LEFT COLUMN STYLES */
+
+       /* LEFT COLUMN STYLES */
         .hero-left {
             padding: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* 1. Stops forcing everything to the dead center */
             position: relative;
         }
 
         .hero-left-content {
             padding: var(--space-md) var(--space-lg);
             padding-right: 0; 
-            margin-top: 150px; 
+            margin-top: 180px; /* 2. Pushes it down safely below your navigation */
+            
+            /* 3. The Natural Spacing Engine */
+            display: flex;
+            flex-direction: column;
+            gap: 80px; /* Adjust this number to increase/decrease the space between the 3 blocks */
         }
         
         /* RIGHT COLUMN STYLES */
@@ -85,7 +91,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--space-sm);
-            font-size: var(--text-lg);
+            font-size: var(--text-xl);
             color: var(--color-dark-gray);
         }
         
@@ -254,8 +260,8 @@
         const galleryConfig = {
             folderName: 'family',
             filePrefix: 'family',
-            imageCount: 72,
-            heroImage: 14 
+            imageCount: 73,
+            heroImage: 73 
         };
 
         // --- DYNAMIC LOADER ---

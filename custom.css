@@ -196,6 +196,27 @@ nav {
     overflow: hidden;
     cursor: pointer;
 }
+/* 1. Stop the bunching in the center */
+.hero-left {
+    justify-content: flex-start !important; 
+    padding-top: 200px; /* Pushes the whole block down from the nav */
+}
+
+/* 2. Add space between the H1 and the H2 */
+.hero-left-content {
+    margin-top: 60px; /* Adjust this to push the H2 further down from "family" */
+}
+
+/* 3. Add space below the H2 to separate it from the paragraphs */
+.hero-left-content h2.sub-headline {
+    margin-bottom: 50px; /* Adjust this to spread the gap */
+}
+
+/* 4. Add space between the paragraphs themselves */
+.hero-left-content p {
+    margin-bottom: 30px; /* Adjust this to spread out the body text */
+}
+
 .img-wrapper {
     position: absolute;
     top: 0; left: 0;
@@ -312,7 +333,7 @@ nav {
 .hero-col-left {
     display: flex;
     flex-direction: column;
-    border-right: var(--border-width) solid var(--color-border);
+    
 }
 .hero-statement {
     padding: 180px var(--container-padding) 200px; 
