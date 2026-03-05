@@ -50,7 +50,7 @@
   
   /* Layout */
   --container-padding: 60px;
-  --border-width: 1px;
+  --border-width: 0px;
   --transition-speed: 0.3s;
   --transition-smooth: 0.5s;
   --transition-slow: 0.8s;
@@ -465,8 +465,6 @@ nav {
   width: 100%;
   display: block;
   transition: transform var(--transition-smooth), opacity var(--transition-speed);
-  opacity: 0;
-  animation: fadeIn var(--transition-slow) forwards;
 }
 .gallery-item:hover img { transform: scale(1.02); }
 @keyframes fadeIn { to { opacity: 1; } }
