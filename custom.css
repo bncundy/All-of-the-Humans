@@ -568,13 +568,43 @@ footer, .contact-footer {
 
 /* --- RESPONSIVE / MOBILE GLOBAL STYLES --- */
 @media (max-width: 900px) {
-    /* 1. Spacing Overrides (Fixing "Scroll of Death") */
-    :root {
-        --space-xl: 50px;
-        --space-2xl: 60px;
-        --space-3xl: 80px;
-        --container-padding: 20px;
+    
+    /* 1. Allow the container to grow as tall as it needs to hold the wrapping text */
+    .hero-left {
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 40px !important; /* Reduces the massive top gap on mobile */
+        padding-bottom: 60px !important; /* Adds padding before the "01. Connect" section starts */
     }
+
+    /* 2. Scale down the giant "family" title so it doesn't crash into the sub-headline */
+    .hero-left h1, h1.split-header {
+        font-size: 4rem !important; 
+        margin-bottom: 20px !important;
+        line-height: 1 !important;
+    }
+
+    /* 3. Tame the sub-headline */
+    .hero-left-content h2.sub-headline {
+        font-size: 1.5rem !important;
+        max-width: 100% !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* 4. Fix the paragraph spill-over and remove the staggered layout for mobile */
+    .hero-left-content {
+        margin-top: 0 !important;
+        gap: 20px !important; /* Tighter vertical spacing */
+    }
+
+    .hero-left-content p {
+        font-size: 1rem !important; /* Forces normal readability */
+        max-width: 100% !important; /* Uses the full width of the phone */
+        align-self: flex-start !important; /* Removes the "push to the right" */
+        text-align: left !important; /* Aligns left for a clean, editorial reading experience */
+        margin-bottom: 15px !important;
+    }
+}
 
     /* 2. Mobile Navigation */
     .mobile-menu-btn { display: block; }
