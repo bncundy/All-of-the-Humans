@@ -568,67 +568,13 @@ footer, .contact-footer {
 
 /* --- RESPONSIVE / MOBILE GLOBAL STYLES --- */
 @media (max-width: 900px) {
-
-    /* 1. THE PARENT FIX: Nuke fixed heights so the whole section can stretch */
-    .luxury-hero, .hero-container, .inquiry-split {
-        height: auto !important;
-        min-height: auto !important;
-        display: flex !important;
-        flex-direction: column !important; 
-        padding-bottom: 0 !important;
+    /* 1. Spacing Overrides (Fixing "Scroll of Death") */
+    :root {
+        --space-xl: 50px;
+        --space-2xl: 60px;
+        --space-3xl: 80px;
+        --container-padding: 20px;
     }
-
-    /* 2. THE IMAGE FIX: Force the photo to the very top */
-    .hero-col-right, .hero-right {
-        order: 1 !important; 
-        width: 100% !important;
-        height: 55vh !important; /* Safe, consistent height for the mobile photo */
-        position: relative !important;
-        min-height: auto !important;
-    }
-
-    /* 3. THE TEXT WRAPPER FIX: Force all text below the photo with a massive bottom bumper */
-    .hero-left, .hero-col-left {
-        order: 2 !important; 
-        height: auto !important;
-        min-height: auto !important;
-        position: relative !important;
-        display: flex !important;
-        flex-direction: column !important;
-        padding: 40px 20px 80px !important; /* 80px bottom padding protects '01. Connect' */
-        justify-content: flex-start !important;
-    }
-
-    /* 4. THE TYPOGRAPHY ORDER: Strip absolute positioning so nothing jumps around */
-    .hero-left h1, h1.split-header, .hero-col-left h1 {
-        position: static !important;
-        font-size: 3.5rem !important; 
-        margin: 0 0 20px !important;
-        line-height: 1 !important;
-    }
-
-    .hero-left-content {
-        position: static !important;
-        margin-top: 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px !important; 
-    }
-
-    .hero-left-content h2.sub-headline {
-        font-size: 1.5rem !important;
-        max-width: 100% !important;
-        margin-bottom: 10px !important;
-    }
-
-    .hero-left-content p {
-        font-size: 1rem !important; 
-        max-width: 100% !important; 
-        align-self: flex-start !important; 
-        text-align: left !important; 
-        margin: 0 !important;
-    }
-}
 
     /* 2. Mobile Navigation */
     .mobile-menu-btn { display: block; }
