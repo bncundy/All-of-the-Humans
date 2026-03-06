@@ -123,43 +123,59 @@
         
         .step-card:nth-child(2) { margin-top: var(--space-xl); }
         
-        /* Responsive */
+        /* Responsive Mobile Overrides (Safe Inline Fix) */
         @media (max-width: 900px) {
-            .editorial-hero { grid-template-columns: 1fr; grid-template-rows: auto 50vh; padding-top: var(--space-xl); }
             
-            /* MOBILE HEADER FIX: Stack them vertically */
+            /* 1. Remove rigid grid rows so the container can stretch as tall as the text needs */
+            .editorial-hero { 
+                display: flex !important; 
+                flex-direction: column !important; 
+                padding-top: var(--space-2xl) !important;
+                height: auto !important; 
+                min-height: auto !important;
+            }
+            
+            /* 2. Put the Image on top, Text on bottom */
+            .hero-right { 
+                order: 1 !important; 
+                height: 55vh !important; 
+                width: 100% !important; 
+                margin-bottom: 30px !important;
+            }
+            .hero-left { 
+                order: 2 !important; 
+                padding: 0 20px 60px !important; /* The 60px bottom padding is the buffer that stops the overlap */
+            }
+
+            /* 3. Tame the Giant Split Headers */
             .split-header { 
-                font-size: 15vw; 
-                position: relative; 
-                top: auto; 
-                width: 100%;
-                text-align: center !important;
-                margin-bottom: -20px;
-                white-space: normal;
+                font-size: 3.5rem !important; /* Shrunk from 15vw to prevent blowing out the screen */
+                position: static !important; /* Removes them from absolute positioning so they stack normally */
+                text-align: left !important;
+                margin-bottom: 20px !important;
+                white-space: normal !important;
+                color: var(--color-black) !important; /* Force 'moments' to be black since it's now on cream background */
             }
 
-            .split-header.left-side { 
-                padding: 0; 
-                transform: none; 
-                right: auto;
-                margin-top: 60px; 
-            }
-            
-            .split-header.right-side { 
-                display: block; 
-                padding: 0; 
-                transform: none; 
-                left: auto;
-                color: var(--color-medium-gray); /* Darker color on mobile so it shows against cream bg */
-            }
+            .split-header.left-side { margin-top: 0 !important; }
+            .split-header.right-side { display: none !important; } /* Hide 'moments' on mobile for a cleaner, single title */
 
-            .hero-left { order: 2; padding: 0; }
-            .hero-left-content { padding: var(--space-md) var(--space-sm); margin-top: 0; }
-            .hero-right { order: 1; height: 50vh; }
+            /* 4. Reset the Paragraph Spacing */
+            .hero-left-content { 
+                padding: 0 !important; 
+                margin-top: 0 !important; 
+                gap: 20px !important; 
+            }
             
-            .text-columns { grid-template-columns: 1fr; }
-            .steps-grid { grid-template-columns: 1fr; margin-top: 0; }
-            .step-card:nth-child(2) { margin-top: 0; }
+            .sub-headline { max-width: 100% !important; font-size: 1.3rem !important; margin-bottom: 20px !important; }
+            .text-columns { grid-template-columns: 1fr !important; }
+            .text-columns p { margin: 0 !important; font-size: 1rem !important; }
+            
+            /* 5. Steps Section Fixes */
+            .steps-section { padding-top: 60px !important; }
+            .steps-grid { grid-template-columns: 1fr !important; margin-top: 0 !important; }
+            .step-card { margin-top: 40px !important; }
+            .step-card:first-child { margin-top: 0 !important; }
         }
     </style>
 </head>
